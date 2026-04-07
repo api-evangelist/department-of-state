@@ -5,8 +5,7 @@ url: >2-
 apis:
   - aid: department-of-state:department-of-state
     name: Department of State
-    tags:
-      - API
+    tags: []
     humanURL: https://2009-2017.state.gov/developer
     properties:
       - url: https://2009-2017.state.gov/developer
