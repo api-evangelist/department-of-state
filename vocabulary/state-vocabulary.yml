@@ -1,0 +1,57 @@
+name: Department of State Vocabulary
+description: >-
+  Controlled vocabulary covering the U.S. Department of State's consular,
+  diplomatic, and public-affairs domains as exposed through legacy and
+  current developer-facing data products (Travel Advisories, Country
+  Information, ConsularLookout, eCASE, passport and visa systems).
+namespace: https://api-evangelist.com/department-of-state/vocab/
+prefix: state
+terms:
+  - term: TravelAdvisory
+    type: Class
+    definition: A State Department travel advisory issued for a country, with a numeric advisory level (1-4).
+  - term: AdvisoryLevel
+    type: Property
+    definition: Numeric severity of a travel advisory (1=Exercise Normal Precautions, 2=Exercise Increased Caution, 3=Reconsider Travel, 4=Do Not Travel).
+  - term: CountryInformation
+    type: Class
+    definition: Country-specific information page covering entry/exit, safety, local laws, health, and embassy contacts.
+  - term: Embassy
+    type: Class
+    definition: A U.S. embassy abroad.
+  - term: Consulate
+    type: Class
+    definition: A U.S. consulate or consulate general abroad.
+  - term: ConsularPost
+    type: Class
+    definition: An umbrella term for embassies and consulates.
+  - term: Visa
+    type: Class
+    definition: A nonimmigrant or immigrant visa class issued by the Department of State.
+  - term: VisaCategory
+    type: Property
+    definition: Letter-number visa class (e.g. B-2, F-1, H-1B, EB-5, IR-1).
+  - term: Passport
+    type: Class
+    definition: A U.S. passport book or card.
+  - term: PassportApplication
+    type: Class
+    definition: Form DS-11 (new) or DS-82 (renewal) passport application.
+  - term: ConsularLookout
+    type: Class
+    definition: A consular lookout / hit indicator used by State Department systems for visa and passport adjudication.
+  - term: ECASE
+    type: Class
+    definition: Department-wide enterprise case management platform used across State Department bureaus.
+  - term: STEPEnrollment
+    type: Class
+    definition: Smart Traveler Enrollment Program registration for U.S. citizens traveling or residing abroad.
+  - term: ForeignAffairsManual
+    type: Class
+    definition: The Foreign Affairs Manual (FAM) and Foreign Affairs Handbook (FAH) - State Department policy and procedure documents.
+  - term: BureauOfConsularAffairs
+    type: Class
+    definition: The State Department bureau overseeing passports, visas, and U.S. citizens services abroad.
+  - term: USCitizenServices
+    type: Class
+    definition: Services offered by consular posts to U.S. citizens (notarials, emergency assistance, voting, federal benefits).

@@ -1,0 +1,59 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "state": "https://api-evangelist.com/department-of-state/vocab/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "TravelAdvisory": {
+      "@id": "state:TravelAdvisory",
+      "@context": {
+        "country": "schema:addressCountry",
+        "title": "schema:name",
+        "advisoryLevel": { "@id": "state:advisoryLevel", "@type": "xsd:integer" },
+        "description": "schema:description",
+        "publishedDate": { "@id": "schema:datePublished", "@type": "xsd:date" },
+        "lastUpdated": { "@id": "dcterms:modified", "@type": "xsd:dateTime" },
+        "url": { "@id": "schema:url", "@type": "@id" }
+      }
+    },
+    "Embassy": {
+      "@id": "state:Embassy",
+      "@context": {
+        "name": "schema:name",
+        "country": "schema:addressCountry",
+        "url": { "@id": "schema:url", "@type": "@id" },
+        "telephone": "schema:telephone",
+        "address": "schema:address",
+        "lat": { "@id": "geo:lat", "@type": "xsd:decimal" },
+        "long": { "@id": "geo:long", "@type": "xsd:decimal" }
+      }
+    },
+    "Visa": {
+      "@id": "state:Visa",
+      "@context": {
+        "category": "state:visaCategory",
+        "description": "schema:description",
+        "purpose": "state:visaPurpose"
+      }
+    },
+    "Passport": {
+      "@id": "state:Passport",
+      "@context": {
+        "type": "state:passportType",
+        "fee": { "@id": "schema:price", "@type": "xsd:decimal" },
+        "processingTime": "state:processingTime"
+      }
+    },
+    "CountryInformation": {
+      "@id": "state:CountryInformation",
+      "@context": {
+        "country": "schema:addressCountry",
+        "summary": "schema:description",
+        "url": { "@id": "schema:url", "@type": "@id" }
+      }
+    }
+  }
+}

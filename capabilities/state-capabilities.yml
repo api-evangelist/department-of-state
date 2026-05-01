@@ -1,0 +1,60 @@
+name: Department of State API Capabilities
+description: >-
+  High-level capabilities surfaced by State Department developer-facing
+  resources, including travel.state.gov, the Bureau of Consular Affairs,
+  legacy 2009-2017 developer.state.gov endpoints, and internal systems
+  (eCASE, ConsularLookout) referenced in public documentation.
+capabilities:
+  - id: travel-advisories
+    name: Country Travel Advisories
+    description: Read State Department travel advisories (Levels 1-4) and country information pages for international travel safety.
+    apis: []
+    sources:
+      - https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html
+      - https://travel.state.gov/_res/rss/TAsTWs.xml
+    auth: None (public RSS / web)
+  - id: country-information
+    name: Country Information
+    description: Country-specific entry/exit requirements, local laws, safety, health, and embassy contacts.
+    apis: []
+    sources:
+      - https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html
+    auth: None (public)
+  - id: passport-status
+    name: Passport Application Status
+    description: Check the status of a passport application; consumer-facing, account-bound (no public API).
+    apis: []
+    sources:
+      - https://travel.state.gov/content/travel/en/passports.html
+    auth: User account (web)
+  - id: visa-information
+    name: Visa Categories and Processing Times
+    description: Reference data for nonimmigrant and immigrant visa categories, processing times, and reciprocity schedules.
+    apis: []
+    sources:
+      - https://travel.state.gov/content/travel/en/us-visas.html
+    auth: None (public)
+  - id: smart-traveler-enrollment
+    name: Smart Traveler Enrollment Program (STEP)
+    description: Voluntary enrollment for U.S. citizens traveling or residing abroad to receive embassy alerts.
+    apis: []
+    sources:
+      - https://step.state.gov/
+    auth: User account
+  - id: consular-lookout
+    name: ConsularLookout (CLASS)
+    description: Internal name-check system used in visa and passport adjudication. Not publicly accessible.
+    apis: []
+    auth: Government-internal only
+  - id: ecase-management
+    name: eCASE Enterprise Case Management
+    description: State Department-wide case-management platform used across bureaus. Not publicly accessible.
+    apis: []
+    auth: Government-internal only
+  - id: foreign-affairs-manual
+    name: Foreign Affairs Manual and Handbook
+    description: Public release of the FAM and FAH - State Department policy and procedure documents.
+    apis: []
+    sources:
+      - https://fam.state.gov/
+    auth: None (public)

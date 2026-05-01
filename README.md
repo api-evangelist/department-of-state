@@ -1,48 +1,58 @@
-# Department of State (department-of-state)
-To protect and promote U.S. security, prosperity, and democratic values and shape an international environment in which all Americans can thrive.
+# Department of State
 
-**URL:** [Visit APIs.json URL](
-https://raw.githubusercontent.com/api-evangelist/department-of-state/refs/heads/main/apis.yml)
+The U.S. Department of State leads U.S. foreign policy, conducts diplomacy with foreign governments, issues U.S. passports and visas, supports U.S. citizens abroad, and publishes country-specific information and travel advisories. The Department does not currently operate a unified developer portal; integrators work from public RSS feeds, web pages, the Foreign Affairs Manual, and references to internal systems (ConsularLookout / CLASS, eCASE) that are not publicly accessible.
+
+This repository inventories that landscape as an APIs.yml index plus generated artifacts (vocabulary, JSON-LD, capabilities, rules) for the public surfaces. No OpenAPI specs are published in this repo because there are no formal, documented REST contracts to specify - including a fabricated spec would misrepresent what the agency offers.
+
+**APIs.yml:** [apis.yml](https://raw.githubusercontent.com/api-evangelist/department-of-state/main/apis.yml)
 
 ## Scope
 
-- **Type:** Contract 
-- **Position:** Consuming 
-- **Access:** 3rd-Party 
+- **Type:** Index
+- **Position:** Consuming
+- **Access:** 3rd-Party
 
-## Tags:
+## Tags
 
- - Federal Government
+- Federal Government
+- Foreign Affairs
+- Travel
+- Consular
+- Visas
+- Passports
 
-## Timestamps
+## Repository Layout
 
-- **Created:** 2024-12-03 
-- **Modified:** 2024-12-29 
+- [`apis.yml`](apis.yml) — APIs.json/yml index of public and referenced State Department surfaces
+- [`json-ld/`](json-ld/) — JSON-LD context aligning State Department terms to schema.org
+- [`vocabulary/`](vocabulary/) — Controlled vocabulary covering travel, consular, visas, passports, embassies, and internal-system references
+- [`capabilities/`](capabilities/) — Capability catalog
+- [`rules/`](rules/) — Attribution, advisory-freshness, PII, and government-internal boundary rules
 
-## APIs
+## What's Catalogued
 
-### Department of State
+### Public Surfaces (Bureau of Consular Affairs)
+- **Travel Advisories** (RSS available)
+- **Country Information Pages**
+- **Smart Traveler Enrollment Program (STEP)**
+- **U.S. Visa Information**
+- **U.S. Passport Services**
 
-How the work of the State Department benefits each U.S. State; Because the
-SSD API is a REST-based API, it can be accessed from a client or
-server-side application. You can use any programming language, because you
-just need to be able to make HTTP GET requests, and handle the responses
-that are in the form of JSON. Note: A token is not needed ...
+### Public Reference
+- **Foreign Affairs Manual (FAM) and Handbook (FAH)**
+- **State Department Open Data on data.gov**
 
-**Human URL:** [https://2009-2017.state.gov/developer](https://2009-2017.state.gov/developer)
+### Government-Internal (Referenced Only)
+- **ConsularLookout (CLASS)** — name-check system used in visa and passport adjudication
+- **eCASE** — enterprise case-management platform used across State Department bureaus
 
+## Why No OpenAPI Specs
 
-#### Tags:
+The Department of State does not publish formal REST APIs with documented endpoints, schemas, or stable base URLs. Travel advisories are distributed via RSS; country information lives in web pages; status lookups (passport, visa) are account-bound web flows; ConsularLookout and eCASE are internal-only. Per the structural rule of this catalog, a spec is only generated where a real, documented contract exists.
 
- - API
-
-#### Properties
-
-- [Documentation](https://2009-2017.state.gov/developer)
+If the Department publishes a developer portal in the future, OpenAPI specs will be added under an `openapi/` folder.
 
 ## Maintainers
 
 **FN:** Kin Lane
-
-**Email:** info@apievangelist.com
-
+**Email:** kin@apievangelist.com

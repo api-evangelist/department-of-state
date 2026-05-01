@@ -1,0 +1,35 @@
+name: Department of State API Rules
+description: >-
+  Rules and constraints for working with State Department developer-facing
+  resources. Most State Department surfaces are not formal public APIs; this
+  ruleset documents what is reusable, attribution requirements, and
+  government-internal boundaries.
+rules:
+  - id: no-formal-public-api-portal
+    description: The State Department does not currently operate a unified developer.state.gov portal; integrators must work from RSS feeds, public web pages, FAM/FAH releases, or data.gov publications.
+    appliesTo: ["*"]
+    severity: must
+  - id: travel-advisory-attribution
+    description: Travel advisory content republished by third parties must cite the U.S. Department of State as the source and link to the canonical travel.state.gov advisory page.
+    appliesTo: ["travel-advisories", "country-information"]
+    severity: must
+  - id: do-not-misrepresent-advisory-level
+    description: Consumers must surface the most current advisory level and not present cached data older than 7 days as authoritative for travel-safety use cases.
+    appliesTo: ["travel-advisories"]
+    severity: must
+  - id: consular-lookout-internal-only
+    description: ConsularLookout (CLASS) is a U.S. government-internal name-check system. Public consumers must not represent themselves as having direct API access.
+    appliesTo: ["consular-lookout"]
+    severity: must
+  - id: ecase-internal-only
+    description: eCASE is a State Department-internal case-management platform. There is no public API; references in public documentation are organizational only.
+    appliesTo: ["ecase-management"]
+    severity: must
+  - id: passport-pii-handling
+    description: Any system that proxies passport application status must comply with the Privacy Act (5 USC 552a) and not store applicant credentials in third-party systems.
+    appliesTo: ["passport-status"]
+    severity: must
+  - id: public-domain-content
+    description: State Department public content is U.S. government work in the public domain unless otherwise noted; some imagery may be licensed separately and must be respected.
+    appliesTo: ["*"]
+    severity: should
