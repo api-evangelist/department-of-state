@@ -1,0 +1,13 @@
+{
+  "repo": "department-of-state",
+  "feeds": [
+    {
+      "source": "https://travel.state.gov/_res/rss/TAsTWs.xml",
+      "feed_url": "https://travel.state.gov/_res/rss/TAsTWs.xml",
+      "saved": 10,
+      "title": "travel.state.gov: Travel Advisories"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:27:02Z"
+}
