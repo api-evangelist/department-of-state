@@ -94,7 +94,7 @@ apis:
     properties:
       - type: Documentation
         url: https://travel.state.gov/content/travel/en/passports.html
-      - type: Status
+      - type: StatusPage
         url: https://travel.state.gov/content/travel/en/passports/need-passport/status.html
   - aid: department-of-state:foreign-affairs-manual
     name: Foreign Affairs Manual (FAM) and Handbook (FAH)
