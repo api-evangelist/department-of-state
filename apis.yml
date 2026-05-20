@@ -24,6 +24,10 @@ tags:
   - Visas
   - Passports
 common:
+  - type: GitHubOrganization
+    url: https://github.com/usstatedept
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/statedept
   - url: https://www.state.gov/
     type: Portal
   - url: https://travel.state.gov/
