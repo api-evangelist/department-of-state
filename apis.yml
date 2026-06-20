@@ -9,7 +9,7 @@ description: >-
   Foreign Affairs Manual, and references to internal systems (ConsularLookout,
   eCASE) that are not publicly accessible.
 url: https://raw.githubusercontent.com/api-evangelist/department-of-state/main/apis.yml
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 created: '2024-12-03'
 modified: '2026-04-28'
 type: Index
