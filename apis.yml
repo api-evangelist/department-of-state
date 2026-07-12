@@ -24,6 +24,8 @@ tags:
   - Visas
   - Passports
 common:
+  - type: DomainSecurity
+    url: security/department-of-state-domain-security.yml
   - type: GitHubOrganization
     url: https://github.com/usstatedept
   - type: LinkedIn
