@@ -10,12 +10,9 @@
     },
     {
       "source": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html",
-      "feed_url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html",
-      "title": "",
-      "saved": 0,
-      "method": "none"
+      "error": "HTTPError"
     }
   ],
-  "post_count": 110,
-  "fetched": "2026-07-11T11:50:51Z"
+  "post_count": 120,
+  "fetched": "2026-08-01T15:49:00Z"
 }
