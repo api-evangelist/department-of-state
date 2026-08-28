@@ -9,6 +9,17 @@ description: >-
   Foreign Affairs Manual, and references to internal systems (ConsularLookout,
   eCASE) that are not publicly accessible.
 url: https://raw.githubusercontent.com/api-evangelist/department-of-state/main/apis.yml
+deliveryModel:
+  model: unknown
+  open_source: false
+  commercial: false
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - none
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: unknown
