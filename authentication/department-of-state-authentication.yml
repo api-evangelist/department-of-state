@@ -1,0 +1,60 @@
+generated: '2026-09-07'
+method: searched
+source: openapi/department-of-state-state-gov-content-openapi.yml
+docs: https://www.state.gov/wp-json/
+summary:
+  types:
+    - none
+    - http
+  public_read_auth: none
+  api_key_required: false
+  registration_required: false
+  oauth2_flows: []
+  api_key_in: []
+note: >-
+  The defining fact about authentication at the Department of State is that there is none to obtain.
+  Every public surface found in this repo — the 65 read operations of the state.gov Content API, the
+  Office of the Historian OPDS Ebook Catalog API, the Travel Advisories RSS feed and the DCAT-US open
+  data catalog — is served anonymously over HTTPS with no key, no token, no registration and no
+  quota. There is no developer portal to sign up at and no credential to issue.
+  The one credential the contract names is internal: HTTP Basic with a WordPress Application
+  Password, which gates the 93 write operations. The Department advertises it itself in the route
+  index, so it is recorded here for completeness, but it is issued to Department editorial accounts
+  and is not obtainable by the public at any price.
+schemes:
+  - name: none
+    type: none
+    applies_to: >-
+      All 65 read operations on https://www.state.gov/wp-json, all four Office of the Historian OPDS
+      catalog operations, and the travel advisory RSS feed.
+    evidence: >-
+      Live anonymous GETs returning 200 on 2026-09-07 against
+      https://www.state.gov/wp-json/wp/v2/state_press_release,
+      https://history.state.gov/api/v1/catalog and
+      https://travel.state.gov/_res/rss/TAsTWs.xml.
+  - name: applicationPassword
+    type: http
+    scheme: basic
+    description: >-
+      WordPress Application Passwords. Advertised by the Department at https://www.state.gov/wp-json/
+      under authentication.application-passwords, authorization endpoint
+      https://www.state.gov/wp-admin/authorize-application.php.
+    applies_to: The 93 write operations (create, update, delete) across every content type and taxonomy.
+    availability: internal-only
+    sources:
+      - openapi/department-of-state-state-gov-content-openapi.yml
+      - https://www.state.gov/wp-json/
+discovery_documents_absent:
+  - path: /.well-known/openid-configuration
+    result: 404 or unreachable on all nine State hosts probed
+  - path: /.well-known/oauth-authorization-server
+    result: 404 or unreachable on all nine State hosts probed
+  - path: /.well-known/oauth-protected-resource
+    result: 404 or unreachable on all nine State hosts probed
+discovery_probe_record: well-known/department-of-state-well-known.yml
+edge_controls:
+  note: >-
+    Authorization is not the only thing standing between a client and the data. travel.state.gov,
+    step.state.gov and cadatacatalog.state.gov answer non-browser clients with a Cloudflare 403
+    challenge, and https://www.state.gov/wp-json/wp/v2/users is blocked at the edge. These are bot
+    policies, not authentication — no credential exists that would clear them.

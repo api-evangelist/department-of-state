@@ -1,0 +1,144 @@
+generated: '2026-09-07'
+method: derived
+status: candidate
+source: openapi/department-of-state-state-gov-content-openapi.yml
+summary: No Model Context Protocol server is published by the Department of State. Searched the Department's own
+  hosts, its two GitHub organizations (usstatedept, HistoryAtState) and the public MCP registries; nothing exists.
+  The tools below are a CANDIDATE shortlist derived from the read-only operations of the state.gov Content API —
+  a proposal for what a server would expose, not a server anyone can call. Every entry names the backing operation,
+  so a tool inherits its real input schema from the spec rather than a guessed one.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: none
+  verified: derived
+  note: 'mode: none — nobody ships a server. The underlying API needs no credential, so a server built from this
+    list would need none either; auth: none describes the API, not a deployed server.'
+server:
+  name: department-of-state
+  transport: null
+  url: null
+tool_count: 19
+tools:
+- name: list_state_press_release
+  description: List state_press_release — Press releases issued by the Office of the Spokesperson and Department
+    bureaus.
+  source_operation: openapi/department-of-state-state-gov-content-openapi.yml#listStatePressRelease
+  method: GET
+  path: /wp/v2/state_press_release
+  auth: none
+- name: get_state_press_release
+  description: Retrieve a state_press_release item — Retrieve a single state_press_release item by numeric id.
+  source_operation: openapi/department-of-state-state-gov-content-openapi.yml#getStatePressRelease
+  method: GET
+  path: /wp/v2/state_press_release/{id}
+  auth: none
+- name: list_state_briefing
+  description: List state_briefing — Press briefings, remarks and transcripts.
+  source_operation: openapi/department-of-state-state-gov-content-openapi.yml#listStateBriefing
+  method: GET
+  path: /wp/v2/state_briefing
+  auth: none
+- name: get_state_briefing
+  description: Retrieve a state_briefing item — Retrieve a single state_briefing item by numeric id.
+  source_operation: openapi/department-of-state-state-gov-content-openapi.yml#getStateBriefing
+  method: GET
+  path: /wp/v2/state_briefing/{id}
+  auth: none
+- name: list_state_report
+  description: List state_report — Department reports (human rights, religious freedom, trafficking in persons,
+    and others).
+  source_operation: openapi/department-of-state-state-gov-content-openapi.yml#listStateReport
+  method: GET
+  path: /wp/v2/state_report
+  auth: none
+- name: get_state_report
+  description: Retrieve a state_report item — Retrieve a single state_report item by numeric id.
+  source_operation: openapi/department-of-state-state-gov-content-openapi.yml#getStateReport
+  method: GET
+  path: /wp/v2/state_report/{id}
+  auth: none
+- name: list_state_biography
+  description: List state_biography — Biographies of Department principals and officials.
+  source_operation: openapi/department-of-state-state-gov-content-openapi.yml#listStateBiography
+  method: GET
+  path: /wp/v2/state_biography
+  auth: none
+- name: get_state_biography
+  description: Retrieve a state_biography item — Retrieve a single state_biography item by numeric id.
+  source_operation: openapi/department-of-state-state-gov-content-openapi.yml#getStateBiography
+  method: GET
+  path: /wp/v2/state_biography/{id}
+  auth: none
+- name: list_state_bureau
+  description: List state_bureau — Bureaus and offices of the Department of State.
+  source_operation: openapi/department-of-state-state-gov-content-openapi.yml#listStateBureau
+  method: GET
+  path: /wp/v2/state_bureau
+  auth: none
+- name: list_state_country
+  description: List state_country — Country and area landing content.
+  source_operation: openapi/department-of-state-state-gov-content-openapi.yml#listStateCountry
+  method: GET
+  path: /wp/v2/state_country
+  auth: none
+- name: get_state_country
+  description: Retrieve a state_country item — Retrieve a single state_country item by numeric id.
+  source_operation: openapi/department-of-state-state-gov-content-openapi.yml#getStateCountry
+  method: GET
+  path: /wp/v2/state_country/{id}
+  auth: none
+- name: list_state_policy_issues
+  description: List state_policy_issues — Policy issues taxonomy.
+  source_operation: openapi/department-of-state-state-gov-content-openapi.yml#listStatePolicyIssues
+  method: GET
+  path: /wp/v2/state_policy_issues
+  auth: none
+- name: list_state_trip_travel
+  description: List state_trip_travel — Official travel by the Secretary and other principals.
+  source_operation: openapi/department-of-state-state-gov-content-openapi.yml#listStateTripTravel
+  method: GET
+  path: /wp/v2/state_trip_travel
+  auth: none
+- name: list_state_people
+  description: List state_people — People records used across state.
+  source_operation: openapi/department-of-state-state-gov-content-openapi.yml#listStatePeople
+  method: GET
+  path: /wp/v2/state_people
+  auth: none
+- name: list_search_result
+  description: List search — Cross-content search across state.
+  source_operation: openapi/department-of-state-state-gov-content-openapi.yml#listSearchResult
+  method: GET
+  path: /wp/v2/search
+  auth: none
+- name: list_state_countries_and_areas
+  description: List state_countries_and_areas — Countries and areas taxonomy.
+  source_operation: openapi/department-of-state-state-gov-content-openapi.yml#listStateCountriesAndAreas
+  method: GET
+  path: /wp/v2/state_countries_and_areas
+  auth: none
+- name: list_state_years
+  description: List state_years — Year taxonomy.
+  source_operation: openapi/department-of-state-state-gov-content-openapi.yml#listStateYears
+  method: GET
+  path: /wp/v2/state_years
+  auth: none
+- name: list_attachment
+  description: List media — Media library attachments (images, PDFs, video posters).
+  source_operation: openapi/department-of-state-state-gov-content-openapi.yml#listAttachment
+  method: GET
+  path: /wp/v2/media
+  auth: none
+- name: list_page
+  description: List pages — state.
+  source_operation: openapi/department-of-state-state-gov-content-openapi.yml#listPage
+  method: GET
+  path: /wp/v2/pages
+  auth: none
+why_this_is_a_good_candidate: The read surface is anonymous, stable, and answers questions agents are actually asked
+  — what is the current travel advisory for a country, what did the Department say at yesterday's briefing, who
+  runs which bureau, what does the latest human rights report say about a country. Today an agent has to scrape
+  state.gov to get any of it.

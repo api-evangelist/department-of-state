@@ -1,0 +1,661 @@
+{
+ "$schema": "http://json-schema.org/draft-04/schema#",
+ "title": "state_bureau",
+ "type": "object",
+ "properties": {
+  "date": {
+   "description": "The date the post was published, in the site's timezone.",
+   "type": [
+    "string",
+    "null"
+   ],
+   "format": "date-time",
+   "context": [
+    "view",
+    "edit",
+    "embed"
+   ]
+  },
+  "date_gmt": {
+   "description": "The date the post was published, as GMT.",
+   "type": [
+    "string",
+    "null"
+   ],
+   "format": "date-time",
+   "context": [
+    "view",
+    "edit"
+   ]
+  },
+  "guid": {
+   "description": "The globally unique identifier for the post.",
+   "type": "object",
+   "context": [
+    "view",
+    "edit"
+   ],
+   "readonly": true,
+   "properties": {
+    "raw": {
+     "description": "GUID for the post, as it exists in the database.",
+     "type": "string",
+     "context": [
+      "edit"
+     ],
+     "readonly": true
+    },
+    "rendered": {
+     "description": "GUID for the post, transformed for display.",
+     "type": "string",
+     "context": [
+      "view",
+      "edit"
+     ],
+     "readonly": true
+    }
+   }
+  },
+  "id": {
+   "description": "Unique identifier for the post.",
+   "type": "integer",
+   "context": [
+    "view",
+    "edit",
+    "embed"
+   ],
+   "readonly": true
+  },
+  "link": {
+   "description": "URL to the post.",
+   "type": "string",
+   "format": "uri",
+   "context": [
+    "view",
+    "edit",
+    "embed"
+   ],
+   "readonly": true
+  },
+  "modified": {
+   "description": "The date the post was last modified, in the site's timezone.",
+   "type": "string",
+   "format": "date-time",
+   "context": [
+    "view",
+    "edit"
+   ],
+   "readonly": true
+  },
+  "modified_gmt": {
+   "description": "The date the post was last modified, as GMT.",
+   "type": "string",
+   "format": "date-time",
+   "context": [
+    "view",
+    "edit"
+   ],
+   "readonly": true
+  },
+  "slug": {
+   "description": "An alphanumeric identifier for the post unique to its type.",
+   "type": "string",
+   "context": [
+    "view",
+    "edit",
+    "embed"
+   ]
+  },
+  "status": {
+   "description": "A named status for the post.",
+   "type": "string",
+   "enum": [
+    "publish",
+    "future",
+    "draft",
+    "pending",
+    "private",
+    "acf-disabled",
+    "congress",
+    "press"
+   ],
+   "context": [
+    "view",
+    "edit"
+   ]
+  },
+  "type": {
+   "description": "Type of post.",
+   "type": "string",
+   "context": [
+    "view",
+    "edit",
+    "embed"
+   ],
+   "readonly": true
+  },
+  "password": {
+   "description": "A password to protect access to the content and excerpt.",
+   "type": "string",
+   "context": [
+    "edit"
+   ]
+  },
+  "permalink_template": {
+   "description": "Permalink template for the post.",
+   "type": "string",
+   "context": [
+    "edit"
+   ],
+   "readonly": true
+  },
+  "generated_slug": {
+   "description": "Slug automatically generated from the post title.",
+   "type": "string",
+   "context": [
+    "edit"
+   ],
+   "readonly": true
+  },
+  "class_list": {
+   "description": "An array of the class names for the post container element.",
+   "type": "array",
+   "context": [
+    "view",
+    "edit"
+   ],
+   "readonly": true,
+   "items": {
+    "type": "string"
+   }
+  },
+  "parent": {
+   "description": "The ID for the parent of the post.",
+   "type": "integer",
+   "context": [
+    "view",
+    "edit"
+   ]
+  },
+  "title": {
+   "description": "The title for the post.",
+   "type": "object",
+   "context": [
+    "view",
+    "edit",
+    "embed"
+   ],
+   "properties": {
+    "raw": {
+     "description": "Title for the post, as it exists in the database.",
+     "type": "string",
+     "context": [
+      "edit"
+     ]
+    },
+    "rendered": {
+     "description": "HTML title for the post, transformed for display.",
+     "type": "string",
+     "context": [
+      "view",
+      "edit",
+      "embed"
+     ],
+     "readonly": true
+    }
+   }
+  },
+  "content": {
+   "description": "The content for the post.",
+   "type": "object",
+   "context": [
+    "view",
+    "edit"
+   ],
+   "properties": {
+    "raw": {
+     "description": "Content for the post, as it exists in the database.",
+     "type": "string",
+     "context": [
+      "edit"
+     ]
+    },
+    "rendered": {
+     "description": "HTML content for the post, transformed for display.",
+     "type": "string",
+     "context": [
+      "view",
+      "edit"
+     ],
+     "readonly": true
+    },
+    "block_version": {
+     "description": "Version of the content block format used by the post.",
+     "type": "integer",
+     "context": [
+      "edit"
+     ],
+     "readonly": true
+    },
+    "protected": {
+     "description": "Whether the content is protected with a password.",
+     "type": "boolean",
+     "context": [
+      "view",
+      "edit",
+      "embed"
+     ],
+     "readonly": true
+    }
+   }
+  },
+  "featured_media": {
+   "description": "The ID of the featured media for the post.",
+   "type": "integer",
+   "context": [
+    "view",
+    "edit",
+    "embed"
+   ]
+  },
+  "menu_order": {
+   "description": "The order of the post in relation to other posts.",
+   "type": "integer",
+   "context": [
+    "view",
+    "edit"
+   ]
+  },
+  "template": {
+   "description": "The theme file to use to display the post.",
+   "type": "string",
+   "context": [
+    "view",
+    "edit"
+   ]
+  },
+  "state_author_groups": {
+   "description": "The terms assigned to the post in the state_author_groups taxonomy.",
+   "type": "array",
+   "items": {
+    "type": "integer"
+   },
+   "context": [
+    "view",
+    "edit"
+   ]
+  },
+  "state_countries_and_areas": {
+   "description": "The terms assigned to the post in the state_countries_and_areas taxonomy.",
+   "type": "array",
+   "items": {
+    "type": "integer"
+   },
+   "context": [
+    "view",
+    "edit"
+   ]
+  },
+  "state_policy_issues": {
+   "description": "The terms assigned to the post in the state_policy_issues taxonomy.",
+   "type": "array",
+   "items": {
+    "type": "integer"
+   },
+   "context": [
+    "view",
+    "edit"
+   ]
+  },
+  "state_states": {
+   "description": "The terms assigned to the post in the state_states taxonomy.",
+   "type": "array",
+   "items": {
+    "type": "integer"
+   },
+   "context": [
+    "view",
+    "edit"
+   ]
+  },
+  "state_subjects": {
+   "description": "The terms assigned to the post in the state_subjects taxonomy.",
+   "type": "array",
+   "items": {
+    "type": "integer"
+   },
+   "context": [
+    "view",
+    "edit"
+   ]
+  },
+  "state_archive_tags": {
+   "description": "The terms assigned to the post in the state_archive_tags taxonomy.",
+   "type": "array",
+   "items": {
+    "type": "integer"
+   },
+   "context": [
+    "view",
+    "edit"
+   ]
+  },
+  "state_live_draft_tags": {
+   "description": "The terms assigned to the post in the state_live_draft_tags taxonomy.",
+   "type": "array",
+   "items": {
+    "type": "integer"
+   },
+   "context": [
+    "view",
+    "edit"
+   ]
+  },
+  "state_rss_feeds": {
+   "description": "The terms assigned to the post in the state_rss_feeds taxonomy.",
+   "type": "array",
+   "items": {
+    "type": "integer"
+   },
+   "context": [
+    "view",
+    "edit"
+   ]
+  },
+  "acf": {
+   "description": "Expose advanced custom fields.",
+   "type": "object"
+  }
+ },
+ "links": [
+  {
+   "rel": "https://api.w.org/action-publish",
+   "title": "The current user can publish this post.",
+   "href": "https://www.state.gov/wp-json/wp/v2/state_bureau/{id}",
+   "targetSchema": {
+    "type": "object",
+    "properties": {
+     "status": {
+      "type": "string",
+      "enum": [
+       "publish",
+       "future"
+      ]
+     }
+    }
+   }
+  },
+  {
+   "rel": "https://api.w.org/action-unfiltered-html",
+   "title": "The current user can post unfiltered HTML markup and JavaScript.",
+   "href": "https://www.state.gov/wp-json/wp/v2/state_bureau/{id}",
+   "targetSchema": {
+    "type": "object",
+    "properties": {
+     "content": {
+      "raw": {
+       "type": "string"
+      }
+     }
+    }
+   }
+  },
+  {
+   "rel": "https://api.w.org/action-assign-state_author_groups",
+   "title": "The current user can assign terms in the state_author_groups taxonomy.",
+   "href": "https://www.state.gov/wp-json/wp/v2/state_bureau/{id}",
+   "targetSchema": {
+    "type": "object",
+    "properties": {
+     "state_author_groups": {
+      "type": "array",
+      "items": {
+       "type": "integer"
+      }
+     }
+    }
+   }
+  },
+  {
+   "rel": "https://api.w.org/action-create-state_author_groups",
+   "title": "The current user can create terms in the state_author_groups taxonomy.",
+   "href": "https://www.state.gov/wp-json/wp/v2/state_bureau/{id}",
+   "targetSchema": {
+    "type": "object",
+    "properties": {
+     "state_author_groups": {
+      "type": "array",
+      "items": {
+       "type": "integer"
+      }
+     }
+    }
+   }
+  },
+  {
+   "rel": "https://api.w.org/action-assign-state_countries_and_areas",
+   "title": "The current user can assign terms in the state_countries_and_areas taxonomy.",
+   "href": "https://www.state.gov/wp-json/wp/v2/state_bureau/{id}",
+   "targetSchema": {
+    "type": "object",
+    "properties": {
+     "state_countries_and_areas": {
+      "type": "array",
+      "items": {
+       "type": "integer"
+      }
+     }
+    }
+   }
+  },
+  {
+   "rel": "https://api.w.org/action-create-state_countries_and_areas",
+   "title": "The current user can create terms in the state_countries_and_areas taxonomy.",
+   "href": "https://www.state.gov/wp-json/wp/v2/state_bureau/{id}",
+   "targetSchema": {
+    "type": "object",
+    "properties": {
+     "state_countries_and_areas": {
+      "type": "array",
+      "items": {
+       "type": "integer"
+      }
+     }
+    }
+   }
+  },
+  {
+   "rel": "https://api.w.org/action-assign-state_policy_issues",
+   "title": "The current user can assign terms in the state_policy_issues taxonomy.",
+   "href": "https://www.state.gov/wp-json/wp/v2/state_bureau/{id}",
+   "targetSchema": {
+    "type": "object",
+    "properties": {
+     "state_policy_issues": {
+      "type": "array",
+      "items": {
+       "type": "integer"
+      }
+     }
+    }
+   }
+  },
+  {
+   "rel": "https://api.w.org/action-create-state_policy_issues",
+   "title": "The current user can create terms in the state_policy_issues taxonomy.",
+   "href": "https://www.state.gov/wp-json/wp/v2/state_bureau/{id}",
+   "targetSchema": {
+    "type": "object",
+    "properties": {
+     "state_policy_issues": {
+      "type": "array",
+      "items": {
+       "type": "integer"
+      }
+     }
+    }
+   }
+  },
+  {
+   "rel": "https://api.w.org/action-assign-state_states",
+   "title": "The current user can assign terms in the state_states taxonomy.",
+   "href": "https://www.state.gov/wp-json/wp/v2/state_bureau/{id}",
+   "targetSchema": {
+    "type": "object",
+    "properties": {
+     "state_states": {
+      "type": "array",
+      "items": {
+       "type": "integer"
+      }
+     }
+    }
+   }
+  },
+  {
+   "rel": "https://api.w.org/action-create-state_states",
+   "title": "The current user can create terms in the state_states taxonomy.",
+   "href": "https://www.state.gov/wp-json/wp/v2/state_bureau/{id}",
+   "targetSchema": {
+    "type": "object",
+    "properties": {
+     "state_states": {
+      "type": "array",
+      "items": {
+       "type": "integer"
+      }
+     }
+    }
+   }
+  },
+  {
+   "rel": "https://api.w.org/action-assign-state_subjects",
+   "title": "The current user can assign terms in the state_subjects taxonomy.",
+   "href": "https://www.state.gov/wp-json/wp/v2/state_bureau/{id}",
+   "targetSchema": {
+    "type": "object",
+    "properties": {
+     "state_subjects": {
+      "type": "array",
+      "items": {
+       "type": "integer"
+      }
+     }
+    }
+   }
+  },
+  {
+   "rel": "https://api.w.org/action-create-state_subjects",
+   "title": "The current user can create terms in the state_subjects taxonomy.",
+   "href": "https://www.state.gov/wp-json/wp/v2/state_bureau/{id}",
+   "targetSchema": {
+    "type": "object",
+    "properties": {
+     "state_subjects": {
+      "type": "array",
+      "items": {
+       "type": "integer"
+      }
+     }
+    }
+   }
+  },
+  {
+   "rel": "https://api.w.org/action-assign-state_archive_tags",
+   "title": "The current user can assign terms in the state_archive_tags taxonomy.",
+   "href": "https://www.state.gov/wp-json/wp/v2/state_bureau/{id}",
+   "targetSchema": {
+    "type": "object",
+    "properties": {
+     "state_archive_tags": {
+      "type": "array",
+      "items": {
+       "type": "integer"
+      }
+     }
+    }
+   }
+  },
+  {
+   "rel": "https://api.w.org/action-create-state_archive_tags",
+   "title": "The current user can create terms in the state_archive_tags taxonomy.",
+   "href": "https://www.state.gov/wp-json/wp/v2/state_bureau/{id}",
+   "targetSchema": {
+    "type": "object",
+    "properties": {
+     "state_archive_tags": {
+      "type": "array",
+      "items": {
+       "type": "integer"
+      }
+     }
+    }
+   }
+  },
+  {
+   "rel": "https://api.w.org/action-assign-state_live_draft_tags",
+   "title": "The current user can assign terms in the state_live_draft_tags taxonomy.",
+   "href": "https://www.state.gov/wp-json/wp/v2/state_bureau/{id}",
+   "targetSchema": {
+    "type": "object",
+    "properties": {
+     "state_live_draft_tags": {
+      "type": "array",
+      "items": {
+       "type": "integer"
+      }
+     }
+    }
+   }
+  },
+  {
+   "rel": "https://api.w.org/action-create-state_live_draft_tags",
+   "title": "The current user can create terms in the state_live_draft_tags taxonomy.",
+   "href": "https://www.state.gov/wp-json/wp/v2/state_bureau/{id}",
+   "targetSchema": {
+    "type": "object",
+    "properties": {
+     "state_live_draft_tags": {
+      "type": "array",
+      "items": {
+       "type": "integer"
+      }
+     }
+    }
+   }
+  },
+  {
+   "rel": "https://api.w.org/action-assign-state_rss_feeds",
+   "title": "The current user can assign terms in the state_rss_feeds taxonomy.",
+   "href": "https://www.state.gov/wp-json/wp/v2/state_bureau/{id}",
+   "targetSchema": {
+    "type": "object",
+    "properties": {
+     "state_rss_feeds": {
+      "type": "array",
+      "items": {
+       "type": "integer"
+      }
+     }
+    }
+   }
+  },
+  {
+   "rel": "https://api.w.org/action-create-state_rss_feeds",
+   "title": "The current user can create terms in the state_rss_feeds taxonomy.",
+   "href": "https://www.state.gov/wp-json/wp/v2/state_bureau/{id}",
+   "targetSchema": {
+    "type": "object",
+    "properties": {
+     "state_rss_feeds": {
+      "type": "array",
+      "items": {
+       "type": "integer"
+      }
+     }
+    }
+   }
+  }
+ ],
+ "$id": "https://www.state.gov/wp-json/wp/v2/state_bureau"
+}

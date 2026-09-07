@@ -1,0 +1,57 @@
+generated: '2026-09-07'
+method: searched
+source: HTTP OPTIONS against https://www.state.gov/wp-json/wp/v2/<resource> — WordPress returns the provider-authored
+  JSON Schema for each resource
+note: These schemas are served verbatim by the Department of State. WordPress emits them as draft-04 JSON Schema
+  in the "schema" member of an OPTIONS response; the only edits are the added $schema and $id members.
+schemas:
+- file: department-of-state-state-press-release.json
+  title: state_press_release
+  resource: state_press_release
+  properties: 30
+  source: OPTIONS https://www.state.gov/wp-json/wp/v2/state_press_release
+- file: department-of-state-state-briefing.json
+  title: state_briefing
+  resource: state_briefing
+  properties: 28
+  source: OPTIONS https://www.state.gov/wp-json/wp/v2/state_briefing
+- file: department-of-state-state-report.json
+  title: state_report
+  resource: state_report
+  properties: 31
+  source: OPTIONS https://www.state.gov/wp-json/wp/v2/state_report
+- file: department-of-state-state-biography.json
+  title: state_biography
+  resource: state_biography
+  properties: 28
+  source: OPTIONS https://www.state.gov/wp-json/wp/v2/state_biography
+- file: department-of-state-state-bureau.json
+  title: state_bureau
+  resource: state_bureau
+  properties: 29
+  source: OPTIONS https://www.state.gov/wp-json/wp/v2/state_bureau
+- file: department-of-state-state-country.json
+  title: state_country
+  resource: state_country
+  properties: 27
+  source: OPTIONS https://www.state.gov/wp-json/wp/v2/state_country
+- file: department-of-state-state-policy-issue.json
+  title: state_policy_issue
+  resource: state_policy_issue
+  properties: 31
+  source: OPTIONS https://www.state.gov/wp-json/wp/v2/state_policy_issue
+- file: department-of-state-state-trip-travel.json
+  title: state_trip_travel
+  resource: state_trip_travel
+  properties: 27
+  source: OPTIONS https://www.state.gov/wp-json/wp/v2/state_trip_travel
+- file: department-of-state-state-people.json
+  title: state_people
+  resource: state_people
+  properties: 26
+  source: OPTIONS https://www.state.gov/wp-json/wp/v2/state_people
+- file: department-of-state-state-ext-content.json
+  title: state_ext_content
+  resource: state_ext_content
+  properties: 27
+  source: OPTIONS https://www.state.gov/wp-json/wp/v2/state_ext_content

@@ -1,0 +1,510 @@
+generated: '2026-09-07'
+method: probed
+source: direct HTTPS GET of each named /.well-known/ path on every host this record knows
+summary: 'Zero documents served. Nine Department of State hosts were probed against the closed path list (security.txt,
+  openid-configuration, oauth-authorization-server, oauth-protected-resource, api-catalog, api-catalog.json, ai-plugin.json,
+  ucp.json, acp.json, aauth-resource.json, apis.json at both the well-known and root locations, apis.yml, agent-card.json
+  and agent.json) plus a negative control on every host. Nothing was retrieved anywhere, so NO WellKnown, SecurityTxt,
+  APICatalog or AgentCard pointer is emitted. Three hosts could not be read at all: travel.state.gov and cadatacatalog.state.gov
+  answer every request from a non-browser client with a Cloudflare 403 challenge, and 2017-2021.state.gov is an
+  archival catch-all that returns the same 188KB HTML page for every path including the control. The Department
+  does publish a Vulnerability Disclosure Policy (see security/) — it is simply not advertised at /.well-known/security.txt,
+  which is the RFC 9116 location CISA BOD 20-01 asks for.'
+hit_count: 0
+hosts:
+- host: https://www.state.gov
+  documents:
+  - path: /.well-known/security.txt
+    status: 301
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog.json
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/ucp.json
+    status: 404
+    file: null
+  - path: /.well-known/acp.json
+    status: 404
+    file: null
+  - path: /.well-known/aauth-resource.json
+    status: 404
+    file: null
+  - path: /.well-known/apis.json
+    status: 404
+    file: null
+  - path: /apis.json
+    status: 404
+    file: null
+  - path: /apis.yml
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+  path_echo_control: passed
+  soft_404_control:
+    path: /.well-known/department-of-state-negative-control-7f3ab91c.json
+    status: 404
+    bytes: 168132
+  hit_count: 0
+  note: Clean negatives. Every path 404s with the WordPress theme 404 page; the negative control also 404s, so the
+    host does not echo paths. /.well-known/security.txt 301s to /state-gov-website-modernization/ — a redirect into
+    an unrelated page, not a served RFC 9116 document.
+- host: https://state.gov
+  documents:
+  - path: /.well-known/security.txt
+    status: 302
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 302
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 302
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 302
+    file: null
+  - path: /.well-known/api-catalog
+    status: 302
+    file: null
+  - path: /.well-known/api-catalog.json
+    status: 302
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 302
+    file: null
+  - path: /.well-known/ucp.json
+    status: 302
+    file: null
+  - path: /.well-known/acp.json
+    status: 302
+    file: null
+  - path: /.well-known/aauth-resource.json
+    status: 302
+    file: null
+  - path: /.well-known/apis.json
+    status: 302
+    file: null
+  - path: /apis.json
+    status: 302
+    file: null
+  - path: /apis.yml
+    status: 302
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 302
+    file: null
+  - path: /.well-known/agent.json
+    status: 302
+    file: null
+  path_echo_control: failed
+  soft_404_control:
+    path: /.well-known/department-of-state-negative-control-7f3ab91c.json
+    status: 302
+    bytes: 113
+  hit_count: 0
+  note: Apex domain. Every path, including the negative control, answers 302 (redirect to www). Nothing is served
+    here; no document was retrievable.
+- host: https://travel.state.gov
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 403
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 403
+    file: null
+  - path: /.well-known/api-catalog
+    status: 403
+    file: null
+  - path: /.well-known/api-catalog.json
+    status: 403
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 403
+    file: null
+  - path: /.well-known/ucp.json
+    status: 403
+    file: null
+  - path: /.well-known/acp.json
+    status: 403
+    file: null
+  - path: /.well-known/aauth-resource.json
+    status: 403
+    file: null
+  - path: /.well-known/apis.json
+    status: 403
+    file: null
+  - path: /apis.json
+    status: 403
+    file: null
+  - path: /apis.yml
+    status: 403
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 403
+    file: null
+  - path: /.well-known/agent.json
+    status: 403
+    file: null
+  path_echo_control: failed
+  soft_404_control:
+    path: /.well-known/department-of-state-negative-control-7f3ab91c.json
+    status: 403
+    bytes: 4577
+  hit_count: 0
+  note: Cloudflare bot challenge. Every path, including the negative control, returns HTTP 403 "Attention Required!
+    | Cloudflare". The wall is on our crawler, not evidence about what the host serves — the same host serves /_res/rss/TAsTWs.xml
+    to the same client at 200.
+- host: https://step.state.gov
+  documents:
+  - path: /.well-known/security.txt
+    status: 301
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 301
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 301
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 301
+    file: null
+  - path: /.well-known/api-catalog
+    status: 301
+    file: null
+  - path: /.well-known/api-catalog.json
+    status: 301
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 301
+    file: null
+  - path: /.well-known/ucp.json
+    status: 301
+    file: null
+  - path: /.well-known/acp.json
+    status: 301
+    file: null
+  - path: /.well-known/aauth-resource.json
+    status: 301
+    file: null
+  - path: /.well-known/apis.json
+    status: 301
+    file: null
+  - path: /apis.json
+    status: 301
+    file: null
+  - path: /apis.yml
+    status: 301
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 301
+    file: null
+  - path: /.well-known/agent.json
+    status: 301
+    file: null
+  path_echo_control: failed
+  soft_404_control:
+    path: /.well-known/department-of-state-negative-control-7f3ab91c.json
+    status: 301
+    bytes: 167
+  hit_count: 0
+  note: Every path, including the negative control, answers 301 to a 167-byte redirect stub. Catch-all; nothing
+    served.
+- host: https://fam.state.gov
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog.json
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/ucp.json
+    status: 404
+    file: null
+  - path: /.well-known/acp.json
+    status: 404
+    file: null
+  - path: /.well-known/aauth-resource.json
+    status: 404
+    file: null
+  - path: /.well-known/apis.json
+    status: 404
+    file: null
+  - path: /apis.json
+    status: 404
+    file: null
+  - path: /apis.yml
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+  path_echo_control: passed
+  soft_404_control:
+    path: /.well-known/department-of-state-negative-control-7f3ab91c.json
+    status: 404
+    bytes: 1245
+  hit_count: 0
+  note: Clean negatives. Every path 404s, negative control included.
+- host: https://history.state.gov
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog.json
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/ucp.json
+    status: 404
+    file: null
+  - path: /.well-known/acp.json
+    status: 404
+    file: null
+  - path: /.well-known/aauth-resource.json
+    status: 404
+    file: null
+  - path: /.well-known/apis.json
+    status: 404
+    file: null
+  - path: /apis.json
+    status: 404
+    file: null
+  - path: /apis.yml
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+  path_echo_control: passed
+  soft_404_control:
+    path: /.well-known/department-of-state-negative-control-7f3ab91c.json
+    status: 404
+    bytes: 17520
+  hit_count: 0
+  note: Clean negatives. Every path 404s through the eXist-db application shell, negative control included. This
+    is the host that serves the OPDS Ebook Catalog API, so the absence of a discovery document here is a real gap
+    rather than a blocked probe.
+- host: https://cadatacatalog.state.gov
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 403
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 403
+    file: null
+  - path: /.well-known/api-catalog
+    status: 403
+    file: null
+  - path: /.well-known/api-catalog.json
+    status: 403
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 403
+    file: null
+  - path: /.well-known/ucp.json
+    status: 403
+    file: null
+  - path: /.well-known/acp.json
+    status: 403
+    file: null
+  - path: /.well-known/aauth-resource.json
+    status: 403
+    file: null
+  - path: /.well-known/apis.json
+    status: 403
+    file: null
+  - path: /apis.json
+    status: 403
+    file: null
+  - path: /apis.yml
+    status: 403
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 403
+    file: null
+  - path: /.well-known/agent.json
+    status: 403
+    file: null
+  path_echo_control: failed
+  soft_404_control:
+    path: /.well-known/department-of-state-negative-control-7f3ab91c.json
+    status: 403
+    bytes: 4559
+  hit_count: 0
+  note: Cloudflare bot challenge. Every path, including the negative control, returns HTTP 403. Bureau of Consular
+    Affairs open data catalog (CKAN); its CKAN /api/3/action/* endpoints are challenged identically.
+- host: https://allowances.state.gov
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+  - path: /.well-known/api-catalog.json
+    status: 404
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 404
+    file: null
+  - path: /.well-known/ucp.json
+    status: 404
+    file: null
+  - path: /.well-known/acp.json
+    status: 404
+    file: null
+  - path: /.well-known/aauth-resource.json
+    status: 404
+    file: null
+  - path: /.well-known/apis.json
+    status: 404
+    file: null
+  - path: /apis.json
+    status: 404
+    file: null
+  - path: /apis.yml
+    status: 404
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+  path_echo_control: passed
+  soft_404_control:
+    path: /.well-known/department-of-state-negative-control-7f3ab91c.json
+    status: 404
+    bytes: 4956
+  hit_count: 0
+  note: Clean negatives. Every path 404s through IIS, negative control included.
+- host: https://2017-2021.state.gov
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: null
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    file: null
+  - path: /.well-known/api-catalog
+    status: 200
+    file: null
+  - path: /.well-known/api-catalog.json
+    status: 200
+    file: null
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    file: null
+  - path: /.well-known/ucp.json
+    status: 200
+    file: null
+  - path: /.well-known/acp.json
+    status: 200
+    file: null
+  - path: /.well-known/aauth-resource.json
+    status: 200
+    file: null
+  - path: /.well-known/apis.json
+    status: 200
+    file: null
+  - path: /apis.json
+    status: 200
+    file: null
+  - path: /apis.yml
+    status: 200
+    file: null
+  - path: /.well-known/agent-card.json
+    status: 200
+    file: null
+  - path: /.well-known/agent.json
+    status: 200
+    file: null
+  path_echo_control: failed
+  soft_404_control:
+    path: /.well-known/department-of-state-negative-control-7f3ab91c.json
+    status: 200
+    bytes: 188865
+  hit_count: 0
+  note: PATH-ECHO / SOFT-404 CATCH-ALL. Every path, including /.well-known/department-of-state-negative-control-7f3ab91c.json,
+    returns HTTP 200 with the same 188,865-byte archived-site HTML page. Every 200 on this host is discarded.

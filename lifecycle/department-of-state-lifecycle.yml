@@ -1,0 +1,90 @@
+generated: '2026-09-07'
+method: searched
+source: >-
+  https://www.state.gov/wp-json/, https://history.state.gov/developer,
+  https://history.state.gov/api/v1/catalog, and the retired endpoints listed in
+  https://github.com/GSA/federal-apis inventory/federal-API-list.csv
+summary: >-
+  The Department of State publishes no API versioning policy, no deprecation policy, no SLA and no
+  status page. Versions are carried in the URL path only because the underlying software puts them
+  there. The evidence that this matters is in the record below: three of the four State APIs the
+  federal inventory listed have been retired with no notice, no Sunset header and no redirect.
+versioning:
+  scheme: uri-path
+  current:
+    - api: state.gov Content API
+      version: wp/v2
+      base: https://www.state.gov/wp-json
+      note: >-
+        wp/v2 is the WordPress core namespace, not a Department version commitment. The Department
+        also registers its own dos/v1 namespace, which currently holds two internal editorial
+        POST routes (generate-slug, check-for-rtl) and no public read surface.
+    - api: Office of the Historian Ebook Catalog API
+      version: v1
+      base: https://history.state.gov/api/v1/catalog
+      note: Documented as v1 at https://history.state.gov/developer/catalog.
+  policy_url: null
+  policy_note: >-
+    No versioning policy is published for either API. The route index at
+    https://www.state.gov/wp-json/ is the only authoritative statement of what exists, and it changes
+    without announcement.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  deprecation_header: false
+  note: >-
+    No RFC 8594 Sunset or Deprecation header was observed on any State response, and no deprecation
+    policy page exists. No Deprecation pointer is emitted.
+deprecated_operations: []
+retired_endpoints:
+  - name: Select State.gov Data (SSD) API
+    documented_at: http://www.state.gov/api/v1/docs/
+    listed_in: GSA federal-apis inventory/federal-API-list.csv
+    probed: '2026-09-07'
+    status: 404
+    note: >-
+      https://www.state.gov/api/v1/docs/ now 301s to /state-gov-website-modernization/ and then 404s;
+      https://www.state.gov/api/v1/ and https://www.state.gov/api/ both 404. Retired without notice.
+  - name: Foreign Per Diem Rates API
+    documented_at: https://explore.data.gov/developers/docs/foreign-per-diem-rates-by-location
+    listed_in: GSA federal-apis inventory/federal-API-list.csv
+    probed: '2026-09-07'
+    status: 000
+    note: >-
+      explore.data.gov no longer resolves. The per diem data itself is still published, but only as
+      an HTML query form at https://allowances.state.gov/web920/per_diem.asp (HTTP 200) — the API in
+      front of it is gone.
+  - name: Travel Alerts and Travel Warnings / US Passport Statistics / Reference Data
+    documented_at: http://ec2-96-127-45-207.us-gov-west-1.compute.amazonaws.com/dataset/travel
+    listed_in: GSA federal-apis inventory/federal-API-list.csv
+    probed: '2026-09-07'
+    status: dns-failure
+    note: >-
+      The raw EC2 hostname is long gone. The successor is the Bureau of Consular Affairs CKAN catalog
+      at https://cadatacatalog.state.gov/, which State's own data.json still links resource downloads
+      from — but every request to it from a non-browser client returns a Cloudflare 403 challenge.
+sla:
+  url: null
+  uptime_target: null
+  note: No service level agreement is published for any public State API surface.
+status_page:
+  url: null
+  note: >-
+    status.state.gov does not resolve; https://www.state.gov/status 404s. No StatusPage pointer is
+    emitted. The passport application status checker at travel.state.gov is a per-application lookup
+    for the public, not an API availability page.
+support:
+  - channel: email
+    target: history@state.gov
+    scope: Office of the Historian APIs and datasets
+    source: https://history.state.gov/developer
+  - channel: github-issues
+    target: https://github.com/HistoryAtState/Feedback
+    scope: Office of the Historian website, datasets and APIs
+  - channel: email
+    target: vdpsubmission@state.gov
+    scope: Security vulnerabilities only
+    source: https://www.state.gov/bureau-of-diplomatic-technology/vulnerability-disclosure-policy
+  - channel: web-form
+    target: https://www.state.gov/contact-us/
+    scope: General Department contact; not a developer support channel

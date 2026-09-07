@@ -1,13 +1,20 @@
 aid: department-of-state
 name: Department of State
 description: >-
-  The U.S. Department of State leads U.S. foreign policy, conducts diplomacy
-  with foreign governments, issues U.S. passports and visas, supports U.S.
-  citizens abroad, and publishes country-specific information and travel
-  advisories. The Department does not currently operate a unified developer
-  portal; instead, integrators work from public RSS feeds, web pages, the
-  Foreign Affairs Manual, and references to internal systems (ConsularLookout,
-  eCASE) that are not publicly accessible.
+  The U.S. Department of State leads U.S. foreign policy, conducts diplomacy with foreign
+  governments, issues U.S. passports and visas, supports U.S. citizens abroad, and publishes
+  country-specific information and travel advisories. It operates no unified developer portal and
+  issues no API keys, but it does serve several real, anonymous, machine-readable surfaces: the
+  state.gov Content API at https://www.state.gov/wp-json, where 473 WordPress REST routes expose
+  press releases, briefings, reports, biographies, bureaus and country and policy content as
+  structured JSON with no credential; the Office of the Historian Ebook Catalog API, an OPDS
+  Catalog 1.1 feed of the Foreign Relations of the United States series and the only surface the
+  Department documents on a developer page of its own; a DCAT-US 3.0 open data catalog of 397
+  datasets at https://www.state.gov/data.json; and the Travel Advisories RSS feed. Discovery is the
+  weak point rather than supply — none of the nine State hosts probed serves any /.well-known/
+  document, three of the four State APIs listed in the federal inventory have been retired without
+  notice, and travel.state.gov and the Bureau of Consular Affairs data catalog refuse non-browser
+  clients outright.
 url: https://raw.githubusercontent.com/api-evangelist/department-of-state/main/apis.yml
 deliveryModel:
   model: unknown
@@ -34,9 +41,9 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/department-of-state.png
 created: '2024-12-03'
-modified: '2026-04-28'
+modified: '2026-09-07'
 type: Index
-position: Consuming
+position: Producing
 access: 3rd-Party
 specificationVersion: '0.23'
 tags:
@@ -54,6 +61,18 @@ tags_raw:
   - Visas
   - Passports
 common:
+  - type: GitHubOrg
+    url: https://github.com/USStateDept
+  - type: Blog
+    url: https://www.state.gov/blogs
+  - type: X
+    url: https://x.com/StateDept
+  - type: AgenticAccess
+    url: agentic-access/department-of-state-agentic-access.yml
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Website
+    url: https://www.state.gov/
   - type: DomainSecurity
     url: security/department-of-state-domain-security.yml
   - type: GitHubOrganization
@@ -66,13 +85,156 @@ common:
     type: Portal
   - url: https://fam.state.gov/
     type: Reference
+  - type: OpenAPI
+    name: state.gov Content API (derived)
+    url: openapi/department-of-state-state-gov-content-openapi.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Overlay
+    url: overlays/department-of-state-state-gov-content-overlay.yaml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: Lifecycle
+    url: lifecycle/department-of-state-lifecycle.yml
+  - type: Conformance
+    url: conformance/department-of-state-conformance.yml
+  - type: Packages
+    url: packages/department-of-state-packages.yml
+  - type: MCPServer
+    url: mcp/department-of-state-mcp.yml
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: LLMsTxt
+    url: llms/department-of-state-llms.txt
+  - type: RateLimits
+    url: rate-limits/department-of-state-rate-limits.yml
+  - type: Plans
+    url: plans/department-of-state-plans-pricing.yml
+  - type: VulnerabilityDisclosure
+    url: security/department-of-state-vulnerability-disclosure.yml
+  - type: Security
+    url: https://www.state.gov/bureau-of-diplomatic-technology/vulnerability-disclosure-policy
+  - type: Documentation
+    url: https://history.state.gov/developer/catalog
+  - type: DeveloperPortal
+    url: https://history.state.gov/developer
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
+  - type: Support
+    url: https://www.state.gov/contact-us/
+  - type: PrivacyPolicy
+    url: https://www.state.gov/privacy-policy
+  - type: TermsOfService
+    url: https://www.state.gov/copyright-information
+  - type: OpenData
+    url: https://www.state.gov/data.json
 apis:
+  - aid: department-of-state:state-gov-content-api
+    name: state.gov Content API
+    description: >-
+      The Department of State runs www.state.gov on WordPress and exposes the WordPress REST API
+      anonymously at https://www.state.gov/wp-json. Alongside the core WordPress resources the
+      Department registers its own content types and taxonomies — state_press_release,
+      state_briefing, state_report, state_biography, state_bureau, state_country,
+      state_policy_issue, state_trip_travel and sixteen more — giving structured JSON access to
+      press releases, press briefings, the flagship annual reports, principal biographies, bureau
+      pages and country and policy landing content. 473 routes are advertised in the index; 65 read
+      operations are public with no key, no registration and no quota. Write operations exist but
+      require a Department editorial account. The Department publishes no OpenAPI; the description
+      in this repo was derived mechanically from its own route index and OPTIONS schemas.
+    humanURL: https://www.state.gov/
+    baseURL: https://www.state.gov/wp-json
+    tags:
+      - Content
+      - Press Releases
+      - Reports
+      - Foreign Affairs
+      - WordPress
+    properties:
+      - type: OpenAPI
+        url: openapi/department-of-state-state-gov-content-openapi.yml
+      - type: APIReference
+        url: https://www.state.gov/wp-json/
+      - type: Authentication
+        url: authentication/department-of-state-authentication.yml
+      - type: Conventions
+        url: conventions/department-of-state-conventions.yml
+      - type: ErrorCatalog
+        url: errors/department-of-state-problem-types.yml
+      - type: DataModel
+        url: data-model/department-of-state-data-model.yml
+      - type: JSONSchema
+        url: json-schema/_index.yml
+      - type: Overlay
+        url: overlays/department-of-state-state-gov-content-overlay.yaml
+      - type: AgentSkill
+        url: skills/_index.yml
+      - type: Documentation
+        url: https://developer.wordpress.org/rest-api/
+  - aid: department-of-state:historian-ebook-catalog-api
+    name: Office of the Historian Ebook Catalog API
+    description: >-
+      A RESTful, OPDS Catalog 1.1 feed of the Foreign Relations of the United States series — the
+      official documentary record of major U.S. foreign policy decisions — published by the Office
+      of the Historian. Four documented operations (catalog root, all volumes in series order, ten
+      most recent, subject browse, and Lucene free-text search) return Atom XML carrying acquisition
+      links to EPUB, MOBI and PDF editions plus cover images. No registration, no API key, no
+      authentication. This is the only surface the Department documents on a developer page of its
+      own, and the source data behind it is open on GitHub as TEI XML.
+    humanURL: https://history.state.gov/developer/catalog
+    baseURL: https://history.state.gov/api/v1
+    tags:
+      - History
+      - Publications
+      - OPDS
+      - Open Data
+      - Foreign Affairs
+    properties:
+      - type: Documentation
+        url: https://history.state.gov/developer/catalog
+      - type: DeveloperPortal
+        url: https://history.state.gov/developer
+      - type: GitHubOrganization
+        url: https://github.com/HistoryAtState
+      - type: Support
+        url: https://github.com/HistoryAtState/Feedback
+      - type: SourceCode
+        url: https://github.com/HistoryAtState/hsg-shell
+      - type: AgentSkill
+        url: skills/department-of-state-frus-ebook-catalog.md
+  - aid: department-of-state:open-data-catalog
+    name: Department of State Open Data Catalog
+    description: >-
+      The Department's Project Open Data catalog, served as a single machine-readable DCAT-US 3.0
+      document at https://www.state.gov/data.json. 397 dataset entries covering Foreign Relations
+      metadata, Humanitarian Information Unit cartography, passport and visa statistics, and
+      international law digests, each with distribution URLs. It is the Department's own index of
+      what it publishes, and it is the document that points at the Bureau of Consular Affairs data
+      catalog at cadatacatalog.state.gov.
+    humanURL: https://catalog.data.gov/dataset?organization=state-gov
+    baseURL: https://www.state.gov/data.json
+    tags:
+      - Open Data
+      - DCAT
+      - Catalog
+    properties:
+      - type: OpenData
+        url: https://www.state.gov/data.json
+      - type: Documentation
+        url: https://catalog.data.gov/dataset?organization=state-gov
+      - type: Conformance
+        url: conformance/department-of-state-conformance.yml
   - aid: department-of-state:travel-advisories
     name: State Department Travel Advisories
     description: >-
       Country-by-country travel advisories (Levels 1-4) issued by the Bureau
       of Consular Affairs, with RSS distribution.
     humanURL: https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html
+    baseURL: https://travel.state.gov/_res/rss/TAsTWs.xml
     tags:
       - Travel
       - Advisories
@@ -182,3 +344,8 @@ apis:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-09-07'
+  status: enriched
+  artifacts_added: 18
+  pass: local-v3

@@ -1,0 +1,59 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the U.S. Department of State state.gov Content API
+  version: 1.0.0
+extends: openapi/department-of-state-state-gov-content-openapi.yml
+x-generated: '2026-09-07'
+x-method: generated
+x-source: >-
+  Records the API Evangelist annotations applied on top of the contract derived from
+  https://www.state.gov/wp-json/. The derived spec is itself a mechanical projection of the
+  Department's live route index and OPTIONS schemas; this overlay carries only our own additions, so
+  the two stay separable.
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: department-of-state
+      x-apievangelist-harvested: '2026-09-07'
+      x-apievangelist-contract-provenance: >-
+        Derived mechanically from https://www.state.gov/wp-json/ (473-route index) plus HTTP OPTIONS
+        on each collection and item route. The Department does not publish an OpenAPI description;
+        it publishes the WordPress route index and per-resource JSON Schema, which is a complete
+        machine-readable contract in a different serialization.
+      x-apievangelist-public-read: true
+      x-apievangelist-public-write: false
+  - target: $.info
+    update:
+      x-agent-notes: >-
+        Read operations need no credential. Use _fields to trim responses — an untrimmed page of
+        state_briefing is roughly 760KB of rendered HTML. Use slug rather than id for stable lookups;
+        ids are not unique across content types. Read X-WP-TotalPages for pagination, not a cursor.
+  - target: $.servers[0]
+    update:
+      x-verified: '2026-09-07'
+      x-verified-status: 200
+  - target: $.tags[?(@.name=='state_press_release')]
+    update:
+      x-apievangelist-priority: marquee
+      x-human-surface: https://www.state.gov/press-releases/
+  - target: $.tags[?(@.name=='state_briefing')]
+    update:
+      x-apievangelist-priority: marquee
+  - target: $.tags[?(@.name=='state_report')]
+    update:
+      x-apievangelist-priority: marquee
+      x-note: >-
+        Carries the Department's flagship annual reports — Country Reports on Human Rights Practices,
+        International Religious Freedom, Trafficking in Persons.
+  - target: $.tags[?(@.name=='state_country')]
+    update:
+      x-apievangelist-priority: marquee
+      x-note: >-
+        Country landing content on state.gov. Distinct from the Bureau of Consular Affairs country
+        information pages on travel.state.gov, which are not exposed through this API.
+  - target: $.components.securitySchemes.applicationPassword
+    update:
+      x-availability: internal-only
+      x-note: >-
+        Advertised by the Department at https://www.state.gov/wp-json/ but not obtainable by the
+        public. Present so the contract is complete, not because a consumer can use it.

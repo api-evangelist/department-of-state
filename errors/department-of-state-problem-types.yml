@@ -1,0 +1,99 @@
+generated: '2026-09-07'
+method: derived
+source: >-
+  openapi/department-of-state-state-gov-content-openapi.yml (4xx responses) plus live observation of
+  https://www.state.gov/wp-json/wp/v2/* on 2026-09-07
+format: wordpress-rest-error
+format_note: >-
+  NOT RFC 9457. The Department serves the WordPress REST envelope
+  {"code": string, "message": string, "data": {"status": integer}} with content-type
+  application/json. There is no `type` URI, no `title`/`detail` split and no
+  application/problem+json media type, so an agent cannot dereference an error class — it must match
+  on the `code` string.
+envelope:
+  media_type: application/json
+  fields:
+    code: Machine-readable error slug, e.g. rest_post_invalid_id. This is the only stable identifier.
+    message: Human-readable English sentence. Localised only where the site locale is.
+    data.status: HTTP status code, repeated inside the body.
+  example:
+    code: rest_post_invalid_id
+    message: Invalid post ID.
+    data:
+      status: 404
+edge_caveat: >-
+  Not every failure returns this envelope. www.state.gov sits behind a WAF that answers some requests
+  with an HTML "Technical Difficulties" page and HTTP 403 instead of JSON — observed on
+  https://www.state.gov/wp-json/wp/v2/users, where user enumeration is blocked at the edge. An agent
+  must check content-type before parsing, and must treat a 403 text/html body as an edge refusal
+  rather than an application error.
+problems:
+  - status: 400
+    code: rest_invalid_param
+    title: Invalid parameter
+    detail: One or more query parameters failed validation against the route's declared args.
+    remediation: >-
+      Re-read the allowed values from HTTP OPTIONS on the collection route; enum-typed parameters
+      such as order, orderby and status reject anything outside their list.
+    observed: true
+    source_operation: openapi/department-of-state-state-gov-content-openapi.yml#listStatePressRelease
+  - status: 401
+    code: rest_forbidden
+    title: Authentication required
+    detail: >-
+      The route requires an authenticated editorial account. Returned for every write operation and
+      for administrative read routes.
+    remediation: >-
+      No public credential exists. The read surface (all list and retrieve operations) needs no
+      authentication; write operations are not available outside the Department.
+    observed: true
+    observed_at: https://www.state.gov/wp-json/wp-abilities/v1/abilities
+    source_operation: openapi/department-of-state-state-gov-content-openapi.yml#createStatePressRelease
+  - status: 403
+    code: rest_cannot_create
+    title: Not permitted
+    detail: Authenticated but lacking the capability required for the operation.
+    remediation: Editorial permission is granted internally; there is no self-service path.
+    observed: false
+    source_operation: openapi/department-of-state-state-gov-content-openapi.yml#createStateReport
+  - status: 403
+    code: edge-waf-block
+    title: Blocked at the edge (HTML, not JSON)
+    detail: >-
+      An HTML page titled "Technical Difficulties" returned by the www.state.gov WAF. Not a
+      WordPress error; there is no code/message envelope.
+    remediation: >-
+      Do not retry blindly. Confirm the route is part of the public read surface listed in the
+      OpenAPI before treating this as transient.
+    observed: true
+    observed_at: https://www.state.gov/wp-json/wp/v2/users
+  - status: 404
+    code: rest_post_invalid_id
+    title: Invalid post ID
+    detail: The numeric id does not resolve to an item of this content type.
+    remediation: >-
+      Ids are not shared across content types. Resolve the id from the matching list operation, or
+      look the item up by slug with the `slug` query parameter.
+    observed: true
+    observed_at: https://www.state.gov/wp-json/wp/v2/state_press_release/1
+    source_operation: openapi/department-of-state-state-gov-content-openapi.yml#getStatePressRelease
+  - status: 404
+    code: rest_no_route
+    title: No route matched
+    detail: No registered route matched the URL and request method.
+    remediation: >-
+      Re-read https://www.state.gov/wp-json/ — it is the authoritative route index and the
+      Department registers and removes custom routes without notice.
+    observed: true
+    observed_at: https://www.state.gov/wp-json/wp/v2/nope
+  - status: 404
+    code: rest_term_invalid
+    title: Invalid term ID
+    detail: The numeric id does not resolve to a term in this taxonomy.
+    remediation: Resolve the term from the matching taxonomy list operation.
+    observed: false
+    source_operation: openapi/department-of-state-state-gov-content-openapi.yml#getStateCountriesAndAreas
+retry_guidance: >-
+  There is no Retry-After header and no documented backoff contract on any State host. Treat 5xx and
+  edge 403s as unbounded — back off exponentially with jitter and cap concurrency yourself. There is
+  no published limit to stay under (see rate-limits/).

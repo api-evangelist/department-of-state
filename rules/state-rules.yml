@@ -1,4 +1,4 @@
-name: Department of State API Rules
+x-name: Department of State API Rules
 description: >-
   Rules and constraints for working with State Department developer-facing
   resources. Most State Department surfaces are not formal public APIs; this

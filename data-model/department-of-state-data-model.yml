@@ -1,0 +1,1064 @@
+generated: '2026-09-07'
+method: derived
+source: openapi/department-of-state-state-gov-content-openapi.yml (schemas harvested by HTTP OPTIONS from https://www.state.gov/wp-json/wp/v2/*)
+summary: The state.gov content graph. Ten custom content types (press releases, briefings, reports, biographies,
+  bureaus, country pages, policy issues, official travel, people, syndicated external content) are joined to sixteen
+  custom taxonomies by arrays of term ids. Every relationship below is carried by an actual property in the Department's
+  own JSON Schema — nothing is inferred from naming alone except where a note says so.
+identifiers:
+  primary: id — integer, unique within a content type and NOT across types
+  stable_lookup: slug — the URL segment; the `slug` query parameter resolves an item without knowing its id
+  caveat: An id from state_press_release will resolve to a different item, or to rest_post_invalid_id, on state_report.
+    Always pair an id with its content type.
+entity_count: 34
+relationship_count: 162
+entities:
+- entity: Attachment
+  title: attachment
+  fields: 33
+  kind: content-type
+  id_field: id
+  slug_field: slug
+  schema: null
+- entity: Category
+  title: category
+  fields: 10
+  kind: taxonomy-term
+  id_field: id
+  slug_field: slug
+  schema: null
+- entity: Page
+  title: page
+  fields: 35
+  kind: content-type
+  id_field: id
+  slug_field: slug
+  schema: null
+- entity: Post
+  title: post
+  fields: 29
+  kind: content-type
+  id_field: id
+  slug_field: slug
+  schema: null
+- entity: SearchResult
+  title: search-result
+  fields: 5
+  kind: meta
+  id_field: id
+  slug_field: null
+  schema: null
+- entity: StateArchiveTags
+  title: state_archive_tags
+  fields: 10
+  kind: taxonomy-term
+  id_field: id
+  slug_field: slug
+  schema: null
+- entity: StateAuthorGroups
+  title: state_author_groups
+  fields: 10
+  kind: taxonomy-term
+  id_field: id
+  slug_field: slug
+  schema: null
+- entity: StateBiography
+  title: state_biography
+  fields: 28
+  kind: content-type
+  id_field: id
+  slug_field: slug
+  schema: json-schema/department-of-state-state-biography.json
+- entity: StateBiographyTypes
+  title: state_biography_types
+  fields: 10
+  kind: taxonomy-term
+  id_field: id
+  slug_field: slug
+  schema: null
+- entity: StateBriefing
+  title: state_briefing
+  fields: 28
+  kind: content-type
+  id_field: id
+  slug_field: slug
+  schema: json-schema/department-of-state-state-briefing.json
+- entity: StateBriefingType
+  title: state_briefing_type
+  fields: 10
+  kind: taxonomy-term
+  id_field: id
+  slug_field: slug
+  schema: null
+- entity: StateBureau
+  title: state_bureau
+  fields: 29
+  kind: content-type
+  id_field: id
+  slug_field: slug
+  schema: json-schema/department-of-state-state-bureau.json
+- entity: StateCountriesAndAreas
+  title: state_countries_and_areas
+  fields: 10
+  kind: taxonomy-term
+  id_field: id
+  slug_field: slug
+  schema: null
+- entity: StateCountry
+  title: state_country
+  fields: 27
+  kind: content-type
+  id_field: id
+  slug_field: slug
+  schema: json-schema/department-of-state-state-country.json
+- entity: StateDocumentType
+  title: state_document_type
+  fields: 10
+  kind: taxonomy-term
+  id_field: id
+  slug_field: slug
+  schema: null
+- entity: StateExtContent
+  title: state_ext_content
+  fields: 27
+  kind: content-type
+  id_field: id
+  slug_field: slug
+  schema: json-schema/department-of-state-state-ext-content.json
+- entity: StateLiveDraftTags
+  title: state_live_draft_tags
+  fields: 10
+  kind: taxonomy-term
+  id_field: id
+  slug_field: slug
+  schema: null
+- entity: StatePeople
+  title: state_people
+  fields: 26
+  kind: content-type
+  id_field: id
+  slug_field: slug
+  schema: json-schema/department-of-state-state-people.json
+- entity: StatePolicyIssue
+  title: state_policy_issue
+  fields: 31
+  kind: content-type
+  id_field: id
+  slug_field: slug
+  schema: json-schema/department-of-state-state-policy-issue.json
+- entity: StatePolicyIssues
+  title: state_policy_issues
+  fields: 10
+  kind: taxonomy-term
+  id_field: id
+  slug_field: slug
+  schema: null
+- entity: StatePressRelease
+  title: state_press_release
+  fields: 30
+  kind: content-type
+  id_field: id
+  slug_field: slug
+  schema: json-schema/department-of-state-state-press-release.json
+- entity: StateReport
+  title: state_report
+  fields: 31
+  kind: content-type
+  id_field: id
+  slug_field: slug
+  schema: json-schema/department-of-state-state-report.json
+- entity: StateReportTypes
+  title: state_report_types
+  fields: 10
+  kind: taxonomy-term
+  id_field: id
+  slug_field: slug
+  schema: null
+- entity: StateRssFeeds
+  title: state_rss_feeds
+  fields: 10
+  kind: taxonomy-term
+  id_field: id
+  slug_field: slug
+  schema: null
+- entity: StateStandardLand
+  title: state_standard_land
+  fields: 31
+  kind: content-type
+  id_field: id
+  slug_field: slug
+  schema: null
+- entity: StateState
+  title: state_state
+  fields: 26
+  kind: content-type
+  id_field: id
+  slug_field: slug
+  schema: null
+- entity: StateStates
+  title: state_states
+  fields: 10
+  kind: taxonomy-term
+  id_field: id
+  slug_field: slug
+  schema: null
+- entity: StateSubjects
+  title: state_subjects
+  fields: 10
+  kind: taxonomy-term
+  id_field: id
+  slug_field: slug
+  schema: null
+- entity: StateTermColl
+  title: state_term_coll
+  fields: 31
+  kind: content-type
+  id_field: id
+  slug_field: slug
+  schema: null
+- entity: StateTripTravel
+  title: state_trip_travel
+  fields: 27
+  kind: content-type
+  id_field: id
+  slug_field: slug
+  schema: json-schema/department-of-state-state-trip-travel.json
+- entity: StateYears
+  title: state_years
+  fields: 10
+  kind: taxonomy-term
+  id_field: id
+  slug_field: slug
+  schema: null
+- entity: Tag
+  title: tag
+  fields: 8
+  kind: taxonomy-term
+  id_field: id
+  slug_field: slug
+  schema: null
+- entity: Taxonomy
+  title: taxonomy
+  fields: 13
+  kind: meta
+  id_field: null
+  slug_field: slug
+  schema: null
+- entity: Type
+  title: type
+  fields: 16
+  kind: meta
+  id_field: null
+  slug_field: slug
+  schema: null
+relationships:
+- from: Attachment
+  to: User
+  type: belongs_to
+  via: author
+  note: Numeric WordPress user id. The users collection itself is blocked at the edge (403), so the id cannot be
+    resolved anonymously.
+- from: Attachment
+  to: Attachment
+  type: has_one
+  via: featured_media
+- from: Category
+  to: Category
+  type: belongs_to
+  via: parent
+  note: Self-referencing hierarchy.
+- from: Page
+  to: Page
+  type: belongs_to
+  via: parent
+  note: Self-referencing hierarchy.
+- from: Page
+  to: User
+  type: belongs_to
+  via: author
+  note: Numeric WordPress user id. The users collection itself is blocked at the edge (403), so the id cannot be
+    resolved anonymously.
+- from: Page
+  to: Attachment
+  type: has_one
+  via: featured_media
+- from: Page
+  to: StateAuthorGroups
+  type: has_many
+  via: state_author_groups
+  note: Term ids in the state_author_groups taxonomy.
+- from: Page
+  to: StateCountriesAndAreas
+  type: has_many
+  via: state_countries_and_areas
+  note: Term ids in the state_countries_and_areas taxonomy.
+- from: Page
+  to: StateDocumentType
+  type: has_many
+  via: state_document_type
+  note: Term ids in the state_document_type taxonomy.
+- from: Page
+  to: StatePolicyIssues
+  type: has_many
+  via: state_policy_issues
+  note: Term ids in the state_policy_issues taxonomy.
+- from: Page
+  to: StateStates
+  type: has_many
+  via: state_states
+  note: Term ids in the state_states taxonomy.
+- from: Page
+  to: StateSubjects
+  type: has_many
+  via: state_subjects
+  note: Term ids in the state_subjects taxonomy.
+- from: Page
+  to: StateArchiveTags
+  type: has_many
+  via: state_archive_tags
+  note: Term ids in the state_archive_tags taxonomy.
+- from: Page
+  to: StateLiveDraftTags
+  type: has_many
+  via: state_live_draft_tags
+  note: Term ids in the state_live_draft_tags taxonomy.
+- from: Page
+  to: StateRssFeeds
+  type: has_many
+  via: state_rss_feeds
+  note: Term ids in the state_rss_feeds taxonomy.
+- from: Post
+  to: User
+  type: belongs_to
+  via: author
+  note: Numeric WordPress user id. The users collection itself is blocked at the edge (403), so the id cannot be
+    resolved anonymously.
+- from: Post
+  to: Attachment
+  type: has_one
+  via: featured_media
+- from: Post
+  to: Category
+  type: has_many
+  via: categories
+- from: Post
+  to: Tag
+  type: has_many
+  via: tags
+- from: Post
+  to: StateAuthorGroups
+  type: has_many
+  via: state_author_groups
+  note: Term ids in the state_author_groups taxonomy.
+- from: StateArchiveTags
+  to: StateArchiveTags
+  type: belongs_to
+  via: parent
+  note: Self-referencing hierarchy.
+- from: StateAuthorGroups
+  to: StateAuthorGroups
+  type: belongs_to
+  via: parent
+  note: Self-referencing hierarchy.
+- from: StateBiography
+  to: StateBiography
+  type: belongs_to
+  via: parent
+  note: Self-referencing hierarchy.
+- from: StateBiography
+  to: Attachment
+  type: has_one
+  via: featured_media
+- from: StateBiography
+  to: StateAuthorGroups
+  type: has_many
+  via: state_author_groups
+  note: Term ids in the state_author_groups taxonomy.
+- from: StateBiography
+  to: StateCountriesAndAreas
+  type: has_many
+  via: state_countries_and_areas
+  note: Term ids in the state_countries_and_areas taxonomy.
+- from: StateBiography
+  to: StatePolicyIssues
+  type: has_many
+  via: state_policy_issues
+  note: Term ids in the state_policy_issues taxonomy.
+- from: StateBiography
+  to: StateSubjects
+  type: has_many
+  via: state_subjects
+  note: Term ids in the state_subjects taxonomy.
+- from: StateBiography
+  to: StateBiographyTypes
+  type: has_many
+  via: state_biography_types
+  note: Term ids in the state_biography_types taxonomy.
+- from: StateBiography
+  to: StateArchiveTags
+  type: has_many
+  via: state_archive_tags
+  note: Term ids in the state_archive_tags taxonomy.
+- from: StateBiography
+  to: StateLiveDraftTags
+  type: has_many
+  via: state_live_draft_tags
+  note: Term ids in the state_live_draft_tags taxonomy.
+- from: StateBiography
+  to: StateRssFeeds
+  type: has_many
+  via: state_rss_feeds
+  note: Term ids in the state_rss_feeds taxonomy.
+- from: StateBiographyTypes
+  to: StateBiographyTypes
+  type: belongs_to
+  via: parent
+  note: Self-referencing hierarchy.
+- from: StateBriefing
+  to: StateBriefing
+  type: belongs_to
+  via: parent
+  note: Self-referencing hierarchy.
+- from: StateBriefing
+  to: Attachment
+  type: has_one
+  via: featured_media
+- from: StateBriefing
+  to: StateAuthorGroups
+  type: has_many
+  via: state_author_groups
+  note: Term ids in the state_author_groups taxonomy.
+- from: StateBriefing
+  to: StateBriefingType
+  type: has_many
+  via: state_briefing_type
+  note: Term ids in the state_briefing_type taxonomy.
+- from: StateBriefing
+  to: StateCountriesAndAreas
+  type: has_many
+  via: state_countries_and_areas
+  note: Term ids in the state_countries_and_areas taxonomy.
+- from: StateBriefing
+  to: StatePolicyIssues
+  type: has_many
+  via: state_policy_issues
+  note: Term ids in the state_policy_issues taxonomy.
+- from: StateBriefing
+  to: StateStates
+  type: has_many
+  via: state_states
+  note: Term ids in the state_states taxonomy.
+- from: StateBriefing
+  to: StateArchiveTags
+  type: has_many
+  via: state_archive_tags
+  note: Term ids in the state_archive_tags taxonomy.
+- from: StateBriefing
+  to: StateLiveDraftTags
+  type: has_many
+  via: state_live_draft_tags
+  note: Term ids in the state_live_draft_tags taxonomy.
+- from: StateBriefing
+  to: StateRssFeeds
+  type: has_many
+  via: state_rss_feeds
+  note: Term ids in the state_rss_feeds taxonomy.
+- from: StateBriefingType
+  to: StateBriefingType
+  type: belongs_to
+  via: parent
+  note: Self-referencing hierarchy.
+- from: StateBureau
+  to: StateBureau
+  type: belongs_to
+  via: parent
+  note: Self-referencing hierarchy.
+- from: StateBureau
+  to: Attachment
+  type: has_one
+  via: featured_media
+- from: StateBureau
+  to: StateAuthorGroups
+  type: has_many
+  via: state_author_groups
+  note: Term ids in the state_author_groups taxonomy.
+- from: StateBureau
+  to: StateCountriesAndAreas
+  type: has_many
+  via: state_countries_and_areas
+  note: Term ids in the state_countries_and_areas taxonomy.
+- from: StateBureau
+  to: StatePolicyIssues
+  type: has_many
+  via: state_policy_issues
+  note: Term ids in the state_policy_issues taxonomy.
+- from: StateBureau
+  to: StateStates
+  type: has_many
+  via: state_states
+  note: Term ids in the state_states taxonomy.
+- from: StateBureau
+  to: StateSubjects
+  type: has_many
+  via: state_subjects
+  note: Term ids in the state_subjects taxonomy.
+- from: StateBureau
+  to: StateArchiveTags
+  type: has_many
+  via: state_archive_tags
+  note: Term ids in the state_archive_tags taxonomy.
+- from: StateBureau
+  to: StateLiveDraftTags
+  type: has_many
+  via: state_live_draft_tags
+  note: Term ids in the state_live_draft_tags taxonomy.
+- from: StateBureau
+  to: StateRssFeeds
+  type: has_many
+  via: state_rss_feeds
+  note: Term ids in the state_rss_feeds taxonomy.
+- from: StateCountriesAndAreas
+  to: StateCountriesAndAreas
+  type: belongs_to
+  via: parent
+  note: Self-referencing hierarchy.
+- from: StateCountry
+  to: StateCountry
+  type: belongs_to
+  via: parent
+  note: Self-referencing hierarchy.
+- from: StateCountry
+  to: StateAuthorGroups
+  type: has_many
+  via: state_author_groups
+  note: Term ids in the state_author_groups taxonomy.
+- from: StateCountry
+  to: StateCountriesAndAreas
+  type: has_many
+  via: state_countries_and_areas
+  note: Term ids in the state_countries_and_areas taxonomy.
+- from: StateCountry
+  to: StatePolicyIssues
+  type: has_many
+  via: state_policy_issues
+  note: Term ids in the state_policy_issues taxonomy.
+- from: StateCountry
+  to: StateStates
+  type: has_many
+  via: state_states
+  note: Term ids in the state_states taxonomy.
+- from: StateCountry
+  to: StateArchiveTags
+  type: has_many
+  via: state_archive_tags
+  note: Term ids in the state_archive_tags taxonomy.
+- from: StateCountry
+  to: StateLiveDraftTags
+  type: has_many
+  via: state_live_draft_tags
+  note: Term ids in the state_live_draft_tags taxonomy.
+- from: StateCountry
+  to: StateRssFeeds
+  type: has_many
+  via: state_rss_feeds
+  note: Term ids in the state_rss_feeds taxonomy.
+- from: StateDocumentType
+  to: StateDocumentType
+  type: belongs_to
+  via: parent
+  note: Self-referencing hierarchy.
+- from: StateExtContent
+  to: StateExtContent
+  type: belongs_to
+  via: parent
+  note: Self-referencing hierarchy.
+- from: StateExtContent
+  to: StateAuthorGroups
+  type: has_many
+  via: state_author_groups
+  note: Term ids in the state_author_groups taxonomy.
+- from: StateExtContent
+  to: StateCountriesAndAreas
+  type: has_many
+  via: state_countries_and_areas
+  note: Term ids in the state_countries_and_areas taxonomy.
+- from: StateExtContent
+  to: StateDocumentType
+  type: has_many
+  via: state_document_type
+  note: Term ids in the state_document_type taxonomy.
+- from: StateExtContent
+  to: StatePolicyIssues
+  type: has_many
+  via: state_policy_issues
+  note: Term ids in the state_policy_issues taxonomy.
+- from: StateExtContent
+  to: StateStates
+  type: has_many
+  via: state_states
+  note: Term ids in the state_states taxonomy.
+- from: StateExtContent
+  to: StateSubjects
+  type: has_many
+  via: state_subjects
+  note: Term ids in the state_subjects taxonomy.
+- from: StateExtContent
+  to: StateArchiveTags
+  type: has_many
+  via: state_archive_tags
+  note: Term ids in the state_archive_tags taxonomy.
+- from: StateExtContent
+  to: StateLiveDraftTags
+  type: has_many
+  via: state_live_draft_tags
+  note: Term ids in the state_live_draft_tags taxonomy.
+- from: StateLiveDraftTags
+  to: StateLiveDraftTags
+  type: belongs_to
+  via: parent
+  note: Self-referencing hierarchy.
+- from: StatePeople
+  to: StatePeople
+  type: belongs_to
+  via: parent
+  note: Self-referencing hierarchy.
+- from: StatePeople
+  to: StateAuthorGroups
+  type: has_many
+  via: state_author_groups
+  note: Term ids in the state_author_groups taxonomy.
+- from: StatePeople
+  to: StateCountriesAndAreas
+  type: has_many
+  via: state_countries_and_areas
+  note: Term ids in the state_countries_and_areas taxonomy.
+- from: StatePeople
+  to: StatePolicyIssues
+  type: has_many
+  via: state_policy_issues
+  note: Term ids in the state_policy_issues taxonomy.
+- from: StatePeople
+  to: StateSubjects
+  type: has_many
+  via: state_subjects
+  note: Term ids in the state_subjects taxonomy.
+- from: StatePeople
+  to: StateBiographyTypes
+  type: has_many
+  via: state_biography_types
+  note: Term ids in the state_biography_types taxonomy.
+- from: StatePeople
+  to: StateArchiveTags
+  type: has_many
+  via: state_archive_tags
+  note: Term ids in the state_archive_tags taxonomy.
+- from: StatePeople
+  to: StateLiveDraftTags
+  type: has_many
+  via: state_live_draft_tags
+  note: Term ids in the state_live_draft_tags taxonomy.
+- from: StatePolicyIssue
+  to: StatePolicyIssue
+  type: belongs_to
+  via: parent
+  note: Self-referencing hierarchy.
+- from: StatePolicyIssue
+  to: User
+  type: belongs_to
+  via: author
+  note: Numeric WordPress user id. The users collection itself is blocked at the edge (403), so the id cannot be
+    resolved anonymously.
+- from: StatePolicyIssue
+  to: Attachment
+  type: has_one
+  via: featured_media
+- from: StatePolicyIssue
+  to: StateAuthorGroups
+  type: has_many
+  via: state_author_groups
+  note: Term ids in the state_author_groups taxonomy.
+- from: StatePolicyIssue
+  to: StateCountriesAndAreas
+  type: has_many
+  via: state_countries_and_areas
+  note: Term ids in the state_countries_and_areas taxonomy.
+- from: StatePolicyIssue
+  to: StateDocumentType
+  type: has_many
+  via: state_document_type
+  note: Term ids in the state_document_type taxonomy.
+- from: StatePolicyIssue
+  to: StatePolicyIssues
+  type: has_many
+  via: state_policy_issues
+  note: Term ids in the state_policy_issues taxonomy.
+- from: StatePolicyIssue
+  to: StateStates
+  type: has_many
+  via: state_states
+  note: Term ids in the state_states taxonomy.
+- from: StatePolicyIssue
+  to: StateSubjects
+  type: has_many
+  via: state_subjects
+  note: Term ids in the state_subjects taxonomy.
+- from: StatePolicyIssue
+  to: StateArchiveTags
+  type: has_many
+  via: state_archive_tags
+  note: Term ids in the state_archive_tags taxonomy.
+- from: StatePolicyIssue
+  to: StateLiveDraftTags
+  type: has_many
+  via: state_live_draft_tags
+  note: Term ids in the state_live_draft_tags taxonomy.
+- from: StatePolicyIssue
+  to: StateRssFeeds
+  type: has_many
+  via: state_rss_feeds
+  note: Term ids in the state_rss_feeds taxonomy.
+- from: StatePolicyIssues
+  to: StatePolicyIssues
+  type: belongs_to
+  via: parent
+  note: Self-referencing hierarchy.
+- from: StatePressRelease
+  to: StatePressRelease
+  type: belongs_to
+  via: parent
+  note: Self-referencing hierarchy.
+- from: StatePressRelease
+  to: Attachment
+  type: has_one
+  via: featured_media
+- from: StatePressRelease
+  to: StateAuthorGroups
+  type: has_many
+  via: state_author_groups
+  note: Term ids in the state_author_groups taxonomy.
+- from: StatePressRelease
+  to: StateCountriesAndAreas
+  type: has_many
+  via: state_countries_and_areas
+  note: Term ids in the state_countries_and_areas taxonomy.
+- from: StatePressRelease
+  to: StateDocumentType
+  type: has_many
+  via: state_document_type
+  note: Term ids in the state_document_type taxonomy.
+- from: StatePressRelease
+  to: StatePolicyIssues
+  type: has_many
+  via: state_policy_issues
+  note: Term ids in the state_policy_issues taxonomy.
+- from: StatePressRelease
+  to: StateStates
+  type: has_many
+  via: state_states
+  note: Term ids in the state_states taxonomy.
+- from: StatePressRelease
+  to: StateSubjects
+  type: has_many
+  via: state_subjects
+  note: Term ids in the state_subjects taxonomy.
+- from: StatePressRelease
+  to: StateArchiveTags
+  type: has_many
+  via: state_archive_tags
+  note: Term ids in the state_archive_tags taxonomy.
+- from: StatePressRelease
+  to: StateLiveDraftTags
+  type: has_many
+  via: state_live_draft_tags
+  note: Term ids in the state_live_draft_tags taxonomy.
+- from: StatePressRelease
+  to: StateRssFeeds
+  type: has_many
+  via: state_rss_feeds
+  note: Term ids in the state_rss_feeds taxonomy.
+- from: StateReport
+  to: StateReport
+  type: belongs_to
+  via: parent
+  note: Self-referencing hierarchy.
+- from: StateReport
+  to: Attachment
+  type: has_one
+  via: featured_media
+- from: StateReport
+  to: StateAuthorGroups
+  type: has_many
+  via: state_author_groups
+  note: Term ids in the state_author_groups taxonomy.
+- from: StateReport
+  to: StateCountriesAndAreas
+  type: has_many
+  via: state_countries_and_areas
+  note: Term ids in the state_countries_and_areas taxonomy.
+- from: StateReport
+  to: StatePolicyIssues
+  type: has_many
+  via: state_policy_issues
+  note: Term ids in the state_policy_issues taxonomy.
+- from: StateReport
+  to: StateReportTypes
+  type: has_many
+  via: state_report_types
+  note: Term ids in the state_report_types taxonomy.
+- from: StateReport
+  to: StateStates
+  type: has_many
+  via: state_states
+  note: Term ids in the state_states taxonomy.
+- from: StateReport
+  to: StateSubjects
+  type: has_many
+  via: state_subjects
+  note: Term ids in the state_subjects taxonomy.
+- from: StateReport
+  to: StateYears
+  type: has_many
+  via: state_years
+  note: Term ids in the state_years taxonomy.
+- from: StateReport
+  to: StateArchiveTags
+  type: has_many
+  via: state_archive_tags
+  note: Term ids in the state_archive_tags taxonomy.
+- from: StateReport
+  to: StateLiveDraftTags
+  type: has_many
+  via: state_live_draft_tags
+  note: Term ids in the state_live_draft_tags taxonomy.
+- from: StateReport
+  to: StateRssFeeds
+  type: has_many
+  via: state_rss_feeds
+  note: Term ids in the state_rss_feeds taxonomy.
+- from: StateReportTypes
+  to: StateReportTypes
+  type: belongs_to
+  via: parent
+  note: Self-referencing hierarchy.
+- from: StateRssFeeds
+  to: StateRssFeeds
+  type: belongs_to
+  via: parent
+  note: Self-referencing hierarchy.
+- from: StateStandardLand
+  to: StateStandardLand
+  type: belongs_to
+  via: parent
+  note: Self-referencing hierarchy.
+- from: StateStandardLand
+  to: User
+  type: belongs_to
+  via: author
+  note: Numeric WordPress user id. The users collection itself is blocked at the edge (403), so the id cannot be
+    resolved anonymously.
+- from: StateStandardLand
+  to: Attachment
+  type: has_one
+  via: featured_media
+- from: StateStandardLand
+  to: StateAuthorGroups
+  type: has_many
+  via: state_author_groups
+  note: Term ids in the state_author_groups taxonomy.
+- from: StateStandardLand
+  to: StateCountriesAndAreas
+  type: has_many
+  via: state_countries_and_areas
+  note: Term ids in the state_countries_and_areas taxonomy.
+- from: StateStandardLand
+  to: StateDocumentType
+  type: has_many
+  via: state_document_type
+  note: Term ids in the state_document_type taxonomy.
+- from: StateStandardLand
+  to: StatePolicyIssues
+  type: has_many
+  via: state_policy_issues
+  note: Term ids in the state_policy_issues taxonomy.
+- from: StateStandardLand
+  to: StateStates
+  type: has_many
+  via: state_states
+  note: Term ids in the state_states taxonomy.
+- from: StateStandardLand
+  to: StateSubjects
+  type: has_many
+  via: state_subjects
+  note: Term ids in the state_subjects taxonomy.
+- from: StateStandardLand
+  to: StateArchiveTags
+  type: has_many
+  via: state_archive_tags
+  note: Term ids in the state_archive_tags taxonomy.
+- from: StateStandardLand
+  to: StateLiveDraftTags
+  type: has_many
+  via: state_live_draft_tags
+  note: Term ids in the state_live_draft_tags taxonomy.
+- from: StateStandardLand
+  to: StateRssFeeds
+  type: has_many
+  via: state_rss_feeds
+  note: Term ids in the state_rss_feeds taxonomy.
+- from: StateState
+  to: StateState
+  type: belongs_to
+  via: parent
+  note: Self-referencing hierarchy.
+- from: StateState
+  to: Attachment
+  type: has_one
+  via: featured_media
+- from: StateState
+  to: StateAuthorGroups
+  type: has_many
+  via: state_author_groups
+  note: Term ids in the state_author_groups taxonomy.
+- from: StateState
+  to: StateStates
+  type: has_many
+  via: state_states
+  note: Term ids in the state_states taxonomy.
+- from: StateState
+  to: StateArchiveTags
+  type: has_many
+  via: state_archive_tags
+  note: Term ids in the state_archive_tags taxonomy.
+- from: StateState
+  to: StateLiveDraftTags
+  type: has_many
+  via: state_live_draft_tags
+  note: Term ids in the state_live_draft_tags taxonomy.
+- from: StateStates
+  to: StateStates
+  type: belongs_to
+  via: parent
+  note: Self-referencing hierarchy.
+- from: StateSubjects
+  to: StateSubjects
+  type: belongs_to
+  via: parent
+  note: Self-referencing hierarchy.
+- from: StateTermColl
+  to: StateTermColl
+  type: belongs_to
+  via: parent
+  note: Self-referencing hierarchy.
+- from: StateTermColl
+  to: User
+  type: belongs_to
+  via: author
+  note: Numeric WordPress user id. The users collection itself is blocked at the edge (403), so the id cannot be
+    resolved anonymously.
+- from: StateTermColl
+  to: Attachment
+  type: has_one
+  via: featured_media
+- from: StateTermColl
+  to: StateAuthorGroups
+  type: has_many
+  via: state_author_groups
+  note: Term ids in the state_author_groups taxonomy.
+- from: StateTermColl
+  to: StateCountriesAndAreas
+  type: has_many
+  via: state_countries_and_areas
+  note: Term ids in the state_countries_and_areas taxonomy.
+- from: StateTermColl
+  to: StateDocumentType
+  type: has_many
+  via: state_document_type
+  note: Term ids in the state_document_type taxonomy.
+- from: StateTermColl
+  to: StatePolicyIssues
+  type: has_many
+  via: state_policy_issues
+  note: Term ids in the state_policy_issues taxonomy.
+- from: StateTermColl
+  to: StateStates
+  type: has_many
+  via: state_states
+  note: Term ids in the state_states taxonomy.
+- from: StateTermColl
+  to: StateSubjects
+  type: has_many
+  via: state_subjects
+  note: Term ids in the state_subjects taxonomy.
+- from: StateTermColl
+  to: StateArchiveTags
+  type: has_many
+  via: state_archive_tags
+  note: Term ids in the state_archive_tags taxonomy.
+- from: StateTermColl
+  to: StateLiveDraftTags
+  type: has_many
+  via: state_live_draft_tags
+  note: Term ids in the state_live_draft_tags taxonomy.
+- from: StateTermColl
+  to: StateRssFeeds
+  type: has_many
+  via: state_rss_feeds
+  note: Term ids in the state_rss_feeds taxonomy.
+- from: StateTripTravel
+  to: StateTripTravel
+  type: belongs_to
+  via: parent
+  note: Self-referencing hierarchy.
+- from: StateTripTravel
+  to: Attachment
+  type: has_one
+  via: featured_media
+- from: StateTripTravel
+  to: StateAuthorGroups
+  type: has_many
+  via: state_author_groups
+  note: Term ids in the state_author_groups taxonomy.
+- from: StateTripTravel
+  to: StateCountriesAndAreas
+  type: has_many
+  via: state_countries_and_areas
+  note: Term ids in the state_countries_and_areas taxonomy.
+- from: StateTripTravel
+  to: StatePolicyIssues
+  type: has_many
+  via: state_policy_issues
+  note: Term ids in the state_policy_issues taxonomy.
+- from: StateTripTravel
+  to: StateStates
+  type: has_many
+  via: state_states
+  note: Term ids in the state_states taxonomy.
+- from: StateTripTravel
+  to: StateArchiveTags
+  type: has_many
+  via: state_archive_tags
+  note: Term ids in the state_archive_tags taxonomy.
+- from: StateTripTravel
+  to: StateLiveDraftTags
+  type: has_many
+  via: state_live_draft_tags
+  note: Term ids in the state_live_draft_tags taxonomy.
+- from: StateTripTravel
+  to: StateRssFeeds
+  type: has_many
+  via: state_rss_feeds
+  note: Term ids in the state_rss_feeds taxonomy.
+- from: StateYears
+  to: StateYears
+  type: belongs_to
+  via: parent
+  note: Self-referencing hierarchy.
+traversal_notes:
+- Term ids in a taxonomy array (state_countries_and_areas, state_policy_issues, state_bureau, state_years, state_subjects)
+  resolve against that taxonomy collection, not against a content collection.
+- Use _embed on a retrieve operation to inline author, featured media and terms in one round trip instead of walking
+  the ids.
+- 'The author id cannot be dereferenced anonymously: https://www.state.gov/wp-json/wp/v2/users returns HTTP 403
+  from the edge WAF.'
+- content.rendered and excerpt.rendered are HTML strings, not structured data. Titles carry HTML entities on the
+  wire.

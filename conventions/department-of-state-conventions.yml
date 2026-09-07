@@ -1,0 +1,138 @@
+generated: '2026-09-07'
+method: derived
+source: >-
+  openapi/department-of-state-state-gov-content-openapi.yml, the route index at
+  https://www.state.gov/wp-json/, and live requests against
+  https://www.state.gov/wp-json/wp/v2/* on 2026-09-07
+summary: >-
+  One cross-cutting semantics document for the state.gov Content API. The public surface is
+  read-only: all 65 list and retrieve operations are anonymous, and all 93 write operations are
+  gated to Department editorial accounts. That single fact determines most of what follows —
+  idempotency, dry-run and reversibility are all questions about a write surface a public consumer
+  cannot reach.
+authentication:
+  public_read: none
+  write: >-
+    HTTP Basic with a WordPress Application Password. Advertised by the Department itself at
+    https://www.state.gov/wp-json/ under authentication.application-passwords, authorization
+    endpoint https://www.state.gov/wp-admin/authorize-application.php. Not obtainable by the public.
+  see: authentication/department-of-state-authentication.yml
+pagination:
+  style: page-and-size
+  cursor: false
+  parameters:
+    - name: page
+      default: 1
+      note: 1-indexed page number.
+    - name: per_page
+      default: 10
+      note: >-
+        Declared maximum is 100 in the WordPress core args. A request for per_page=500 against
+        https://www.state.gov/wp-json/wp/v2/state_press_release returned a body rather than a 400 on
+        2026-09-07, so do not rely on the cap being enforced consistently.
+    - name: offset
+      note: Skips n items; mutually useful with per_page for deep traversal.
+    - name: order
+      enum: [asc, desc]
+    - name: orderby
+      note: Per-resource enum; read the allowed values from HTTP OPTIONS on the route.
+  response_signals:
+    - header: X-WP-Total
+      meaning: Total number of items matching the query.
+    - header: X-WP-TotalPages
+      meaning: Total number of pages at the requested per_page.
+  note: >-
+    There is no Link rel="next" header and no envelope — the body is a bare JSON array. An agent
+    walking a collection must read X-WP-TotalPages, not look for a next cursor in the body.
+filtering:
+  - name: search
+    note: Free-text search within the collection.
+  - name: slug
+    note: Look an item up by its URL slug instead of its numeric id. The stable way to resolve content.
+  - name: after / before
+    note: ISO 8601 date filters on the publication date; modified_after / modified_before also exist.
+  - name: include / exclude
+    note: Arrays of ids.
+  - name: status
+    note: Defaults to publish. Non-public statuses require authentication.
+field_selection:
+  parameter: _fields
+  note: >-
+    Comma-separated allowlist of top-level properties. Worth using — an unfiltered page of
+    state_briefing is roughly 760KB because content.rendered carries the full HTML of each item.
+  embedding:
+    parameter: _embed
+    note: Inlines linked resources (author, featured media, terms) that otherwise require follow-up calls.
+  envelope:
+    parameter: _envelope
+    note: Wraps body, status and headers into the JSON body for clients that cannot read headers.
+idempotency:
+  supported: false
+  coverage: none
+  header: null
+  note: >-
+    No Idempotency-Key header or parameter appears anywhere in the 473-route index or in the args of
+    any of the 158 operations. Retrying a create would create a duplicate. This is not a gap that
+    affects public consumers today, because no public caller can perform a write — but it means the
+    write surface carries no replay protection at all.
+dry_run_mode:
+  supported: false
+  note: No validate-only or preview mode is exposed on any route.
+reversibility:
+  grade: documented
+  note: >-
+    Reversal exists in the contract but no window is stated by the Department, so this grades as
+    documented rather than verified. It applies only to the editorial write surface.
+  surfaces:
+    - write_operation: deleteStatePressRelease
+      reversal: >-
+        DELETE without force=true moves the item to trash (status becomes "trash") rather than
+        destroying it; the item can be restored by updating status back to publish or draft.
+      reversal_operation: updateStatePressRelease
+      window: null
+      window_note: >-
+        WordPress core empties the trash on a schedule set by the site operator. The Department does
+        not publish its retention setting, so the window is unknown. Do not assume 30 days.
+      evidence: >-
+        The `force` boolean appears in the DELETE args returned by
+        OPTIONS https://www.state.gov/wp-json/wp/v2/state_press_release/{id}, described as
+        "Whether to bypass Trash and force deletion."
+    - write_operation: deleteStateReport
+      reversal: Same trash semantics.
+      reversal_operation: updateStateReport
+      window: null
+  irreversible:
+    - >-
+      DELETE with force=true is permanent. There is no undo and no published recovery path.
+    - >-
+      Taxonomy term deletion (deleteStateCountriesAndAreas and the other taxonomy routes) requires
+      force=true — terms have no trash state, so every taxonomy delete is irreversible.
+versioning:
+  style: uri-path
+  note: wp/v2 in the path. See lifecycle/department-of-state-lifecycle.yml.
+request_tracing:
+  request_id_header: null
+  note: >-
+    No X-Request-Id or correlation header is returned. There is no way to reference a specific call
+    when reporting a problem, and no support channel that would accept one.
+error_envelope:
+  shape: '{code, message, data.status}'
+  media_type: application/json
+  rfc9457: false
+  see: errors/department-of-state-problem-types.yml
+rate_limit_signaling:
+  headers: []
+  note: >-
+    No X-RateLimit-*, RateLimit-* or Retry-After header was observed on any response. robots.txt on
+    www.state.gov asks for crawl-delay: 5, which is the only throttling signal the Department
+    publishes anywhere. See rate-limits/department-of-state-rate-limits.yml.
+caching:
+  note: >-
+    Responses are served through CloudFront with Cache-Control max-age (3600s observed on HTML
+    routes). ETag and Last-Modified are not consistently present on wp-json responses; conditional
+    requests should not be relied on.
+content_encoding:
+  note: >-
+    Text fields are returned in two forms: `rendered` (HTML, entity-encoded) and, on write, `raw`.
+    Anything consuming title.rendered or content.rendered must HTML-decode and strip markup —
+    titles carry entities such as &#8211; in the wire format.

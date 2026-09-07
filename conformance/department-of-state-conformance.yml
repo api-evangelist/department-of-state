@@ -1,0 +1,94 @@
+generated: '2026-09-07'
+method: searched
+source: >-
+  https://www.state.gov/wp-json/ (route index + OPTIONS schemas),
+  https://www.state.gov/data.json, https://history.state.gov/api/v1/catalog,
+  https://history.state.gov/developer/catalog,
+  https://travel.state.gov/_res/rss/TAsTWs.xml
+summary: >-
+  The Department of State does not publish an API compliance or certification program, and no
+  certification claim is asserted here. What it does publish is three contracts that each declare a
+  recognised standard in the document itself: a DCAT-US 3.0 open-data catalog, an OPDS Catalog 1.1
+  ebook API, and an RSS 2.0 advisory feed. Those declarations are recorded below with the exact
+  location in the contract that carries them.
+standards:
+  - id: dcat-us-3.0
+    name: DCAT-US 3.0 (Project Open Data / resources.data.gov)
+    conforms: true
+    evidence: >-
+      https://www.state.gov/data.json declares conformsTo
+      {"@type":"Standard","title":"DCAT-US 3.0","identifier":"https://resources.data.gov/dcat-us/3.0.0"}
+      in the document root and carries 397 dataset entries.
+    domain_standard: true
+    domain: government open data
+  - id: opds-catalog-1.1
+    name: Open Publication Distribution System (OPDS) Catalog 1.1
+    conforms: true
+    evidence: >-
+      https://history.state.gov/api/v1/catalog returns an Atom feed whose link elements carry
+      type="application/atom+xml;profile=opds-catalog;kind=acquisition"; the Office of the Historian
+      documents the API as OPDS 1.1 at https://history.state.gov/developer/catalog.
+    domain_standard: true
+    domain: digital publication distribution
+  - id: rfc4287-atom
+    name: Atom Syndication Format (RFC 4287)
+    conforms: true
+    evidence: >-
+      https://history.state.gov/api/v1/catalog root element is
+      <feed xmlns="http://www.w3.org/2005/Atom"> with id, title, updated and author.
+  - id: rss-2.0
+    name: RSS 2.0
+    conforms: true
+    evidence: >-
+      https://travel.state.gov/_res/rss/TAsTWs.xml is <rss version="2.0"> with a Dublin Core
+      namespace; it is the machine-readable distribution of the Travel Advisories.
+  - id: wordpress-rest-api-v2
+    name: WordPress REST API v2
+    conforms: true
+    evidence: >-
+      https://www.state.gov/wp-json/ advertises namespaces including wp/v2 and returns a 473-route
+      index; HTTP OPTIONS on each route returns the WordPress schema/args document.
+  - id: json-schema-draft-04
+    name: JSON Schema draft-04
+    conforms: true
+    evidence: >-
+      Each OPTIONS response on https://www.state.gov/wp-json/wp/v2/<resource> carries a "schema"
+      member in draft-04 form; 10 are captured verbatim in json-schema/.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      Errors use the WordPress {code, message, data.status} envelope with content-type
+      application/json, not application/problem+json. Observed on
+      https://www.state.gov/wp-json/wp-abilities/v1/abilities (401) and
+      https://www.state.gov/wp-json/wp/v2/nonexistent (404).
+  - id: oauth2
+    conforms: false
+    evidence: >-
+      No oauth2 securityScheme in any harvested contract; no /.well-known/oauth-authorization-server
+      on any of the nine hosts probed (see well-known/).
+  - id: oidc
+    conforms: false
+    evidence: No /.well-known/openid-configuration on any of the nine hosts probed.
+  - id: idempotency-key
+    conforms: false
+    evidence: >-
+      No idempotency key header or parameter appears in the route index args for any of the 158
+      operations. See conventions/.
+  - id: cursor-pagination
+    conforms: false
+    evidence: >-
+      Pagination is page/per_page offset style with X-WP-Total and X-WP-TotalPages response headers,
+      not cursor based. See conventions/.
+  - id: ogc-api
+    conforms: false
+    evidence: >-
+      No OGC surface. hiu.state.gov (Humanitarian Information Unit) distributes cartography as PDF
+      through data.json rather than through WMS/WFS/OGC API endpoints; no conformance document or
+      GetCapabilities response was found on any State host.
+compliance_program:
+  published: false
+  note: >-
+    The Department publishes a Vulnerability Disclosure Policy under CISA Binding Operational
+    Directive 20-01 (see security/department-of-state-vulnerability-disclosure.yml), but no SOC 2,
+    ISO 27001, FedRAMP or equivalent certification is published for any of these public read
+    surfaces. No Compliance pointer is emitted.

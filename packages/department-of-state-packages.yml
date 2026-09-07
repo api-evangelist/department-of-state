@@ -1,0 +1,57 @@
+generated: '2026-09-07'
+method: searched
+source: >-
+  npm registry search, PyPI, https://github.com/usstatedept, https://github.com/HistoryAtState,
+  https://history.state.gov/developer
+package_count: 0
+packages: []
+summary: >-
+  The Department of State ships no client library for any of its public APIs, on any registry. This
+  is a searched zero, not an unchecked one: the npm registry search API was queried for "state.gov",
+  "history.state.gov" and "usstatedept" and returned no matching packages; PyPI has no
+  state-department project; and neither GitHub organization publishes an SDK. No SDKs pointer is
+  emitted.
+registries_checked:
+  - registry: npm
+    query: ['state.gov', 'history.state.gov', 'usstatedept']
+    endpoint: https://registry.npmjs.org/-/v1/search
+    result: no first-party package
+  - registry: pypi
+    endpoint: https://pypi.org/pypi/state-department/json
+    status: 404
+    result: absent
+  - registry: github
+    org: https://github.com/usstatedept
+    result: >-
+      88 repositories, overwhelmingly abandoned application code and forks from 2014-2017. No client
+      library for any State API. The most recently touched are geonode and geonodewininstall
+      (2025-10) — a GeoNode deployment, not an SDK.
+  - registry: github
+    org: https://github.com/HistoryAtState
+    result: >-
+      28 active repositories (most updated within the last two weeks) holding the Office of the
+      Historian's SOURCE DATA and website code — frus (TEI XML), people, terms, milestones, travels,
+      pocom, hsg-shell. These are open data and an application, not a client library for the OPDS
+      catalog API.
+related_open_source:
+  - name: frus
+    url: https://github.com/HistoryAtState/frus
+    kind: source-data
+    official: true
+    note: Foreign Relations of the United States, TEI XML source files. The corpus behind the OPDS catalog API.
+  - name: hsg-shell
+    url: https://github.com/HistoryAtState/hsg-shell
+    kind: application
+    official: true
+    note: XQuery source for history.state.gov, including the code that serves /api/v1/catalog.
+  - name: State-TalentMAP-API
+    url: https://github.com/usstatedept/State-TalentMAP-API
+    kind: application
+    official: true
+    note: >-
+      Django source for the Foreign Service bidding and assignment system. Source is public; there is
+      no public callable host and no client library.
+version_note: >-
+  version and published are omitted rather than nulled on the related_open_source entries because
+  none of them is a registry package — they are Git repositories with no published release artifact
+  to date.

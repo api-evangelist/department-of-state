@@ -1,0 +1,22 @@
+generated: '2026-09-07'
+method: generated
+source: >-
+  openapi/department-of-state-state-gov-content-openapi.yml,
+  https://history.state.gov/developer/catalog, conventions/, errors/
+note: >-
+  The Department publishes no AGENTS.md and no skill files of its own; probed
+  https://www.state.gov/llms.txt (404) and both GitHub organizations. Every operationId referenced
+  below was verified against the harvested contract before it was written down.
+skills:
+  - file: department-of-state-track-press-releases.md
+    name: Track Department of State press releases and briefings
+    api: openapi/department-of-state-state-gov-content-openapi.yml
+    operations: [listStatePressRelease, getStatePressRelease, listStateBriefing, getStateBriefing, listStateAuthorGroups]
+  - file: department-of-state-country-and-policy-lookup.md
+    name: Look up Department of State country and policy content
+    api: openapi/department-of-state-state-gov-content-openapi.yml
+    operations: [listStateCountriesAndAreas, listStateCountry, getStateCountry, listStatePolicyIssues, listStateReport, listStateBureau]
+  - file: department-of-state-frus-ebook-catalog.md
+    name: Search and download the Foreign Relations of the United States series
+    api: https://history.state.gov/api/v1/catalog
+    operations: [catalog, catalog/all, catalog/recent, catalog/browse, catalog/search]

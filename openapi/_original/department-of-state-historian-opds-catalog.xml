@@ -1,0 +1,33 @@
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <id>https://history.state.gov/api/v1/catalog</id>
+    <title>Office of the Historian Ebook Catalog</title>
+    <updated>2026-09-07T14:20:22.61Z</updated>
+    <author>
+        <name>Office of the Historian</name>
+        <uri>https://history.state.gov/</uri>
+    </author>
+    <link type="application/atom+xml;profile=opds-catalog;kind=acquisition" rel="self" href="https://history.state.gov/api/v1/catalog" title="Office of the Historian Ebook Catalog"/>
+    <link type="application/atom+xml;profile=opds-catalog;kind=navigation" rel="start" href="https://history.state.gov/api/v1/catalog" title="Foreign Relations of the United States"/>
+    <link type="application/opensearchdescription+xml" rel="search" href="https://history.state.gov/opensearch.xml" title="Search Office of the Historian ebooks"/>
+    <entry>
+        <title>All Volumes</title>
+        <id>all</id>
+        <updated>2026-09-07T14:20:22.61Z</updated>
+        <summary type="text">All Foreign Relations of the United States series ebooks</summary>
+        <link type="application/atom+xml;profile=opds-catalog;kind=acquisition" rel="subsection" href="https://history.state.gov/api/v1/catalog/all" title="Foreign Relations of the United States Ebook Catalog"/>
+    </entry>
+    <entry>
+        <title>Recently Published</title>
+        <id>recent</id>
+        <updated>2026-09-07T14:20:22.61Z</updated>
+        <summary type="text">10 Most Recently Published Volumes</summary>
+        <link type="application/atom+xml;profile=opds-catalog;kind=acquisition" rel="http://opds-spec.org/sort/new" href="https://history.state.gov/api/v1/catalog/recent" title="10 Most Recently Published"/>
+    </entry>
+    <entry>
+        <title>Browse By Keywords</title>
+        <id>browse</id>
+        <updated>2026-09-07T14:20:22.61Z</updated>
+        <summary type="text">Browse By Keywords</summary>
+        <link type="application/atom+xml;profile=opds-catalog;kind=navigation" rel="subsection" href="https://history.state.gov/api/v1/catalog/browse" title="Browse By Keywords"/>
+    </entry>
+</feed>
