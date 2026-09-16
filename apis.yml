@@ -1,20 +1,17 @@
 aid: department-of-state
 name: Department of State
-description: >-
-  The U.S. Department of State leads U.S. foreign policy, conducts diplomacy with foreign
-  governments, issues U.S. passports and visas, supports U.S. citizens abroad, and publishes
-  country-specific information and travel advisories. It operates no unified developer portal and
-  issues no API keys, but it does serve several real, anonymous, machine-readable surfaces: the
-  state.gov Content API at https://www.state.gov/wp-json, where 473 WordPress REST routes expose
-  press releases, briefings, reports, biographies, bureaus and country and policy content as
-  structured JSON with no credential; the Office of the Historian Ebook Catalog API, an OPDS
-  Catalog 1.1 feed of the Foreign Relations of the United States series and the only surface the
-  Department documents on a developer page of its own; a DCAT-US 3.0 open data catalog of 397
-  datasets at https://www.state.gov/data.json; and the Travel Advisories RSS feed. Discovery is the
-  weak point rather than supply — none of the nine State hosts probed serves any /.well-known/
-  document, three of the four State APIs listed in the federal inventory have been retired without
-  notice, and travel.state.gov and the Bureau of Consular Affairs data catalog refuse non-browser
-  clients outright.
+description: 'The U.S. Department of State leads U.S. foreign policy, conducts diplomacy with foreign
+  governments, issues U.S. passports and visas, supports U.S. citizens abroad, and publishes country-specific
+  information and travel advisories. It operates no unified developer portal and issues no API keys, but
+  it does serve several real, anonymous, machine-readable surfaces: the state.gov Content API at https://www.state.gov/wp-json,
+  where 473 WordPress REST routes expose press releases, briefings, reports, biographies, bureaus and
+  country and policy content as structured JSON with no credential; the Office of the Historian Ebook
+  Catalog API, an OPDS Catalog 1.1 feed of the Foreign Relations of the United States series and the only
+  surface the Department documents on a developer page of its own; a DCAT-US 3.0 open data catalog of
+  397 datasets at https://www.state.gov/data.json; and the Travel Advisories RSS feed. Discovery is the
+  weak point rather than supply — none of the nine State hosts probed serves any /.well-known/ document,
+  three of the four State APIs listed in the federal inventory have been retired without notice, and travel.state.gov
+  and the Bureau of Consular Affairs data catalog refuse non-browser clients outright.'
 url: https://raw.githubusercontent.com/api-evangelist/department-of-state/main/apis.yml
 deliveryModel:
   model: unknown
@@ -41,309 +38,1069 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/department-of-state.png
 created: '2024-12-03'
-modified: '2026-09-07'
+modified: '2026-09-16'
 type: Index
 position: Producing
 access: 3rd-Party
 specificationVersion: '0.23'
 tags:
-  - Federal-Government
-  - Foreign Affairs
-  - Travel
-  - Consular
-  - Visas
-  - Passports
+- Federal-Government
+- Foreign Affairs
+- Travel
+- Consular
+- Visas
+- Passports
 tags_raw:
-  - Federal Government
-  - Foreign Affairs
-  - Travel
-  - Consular
-  - Visas
-  - Passports
+- Federal Government
+- Foreign Affairs
+- Travel
+- Consular
+- Visas
+- Passports
 common:
-  - type: GitHubOrg
-    url: https://github.com/USStateDept
-  - type: Blog
-    url: https://www.state.gov/blogs
-  - type: X
-    url: https://x.com/StateDept
-  - type: AgenticAccess
-    url: agentic-access/department-of-state-agentic-access.yml
+- type: GitHubOrg
+  url: https://github.com/USStateDept
+- type: Blog
+  url: https://www.state.gov/blogs
+- type: X
+  url: https://x.com/StateDept
+- type: AgenticAccess
+  url: agentic-access/department-of-state-agentic-access.yml
+- type: Authentication
+  url: authentication/department-of-state-authentication.yml
+- type: Website
+  url: https://www.state.gov/
+- type: DomainSecurity
+  url: security/department-of-state-domain-security.yml
+- type: GitHubOrganization
+  url: https://github.com/usstatedept
+- type: LinkedIn
+  url: https://www.linkedin.com/company/statedept
+- url: https://www.state.gov/
+  type: Portal
+- url: https://travel.state.gov/
+  type: Portal
+- url: https://fam.state.gov/
+  type: Reference
+- type: OpenAPI
+  name: state.gov Content API (derived)
+  url: openapi/_original/department-of-state-state-gov-content-openapi.yml
+- type: JSONSchema
+  url: json-schema/_index.yml
+- type: Overlay
+  url: overlays/department-of-state-state-gov-content-overlay.yaml
+- type: Conventions
+  url: conventions/department-of-state-conventions.yml
+- type: ErrorCatalog
+  url: errors/department-of-state-problem-types.yml
+- type: DataModel
+  url: data-model/department-of-state-data-model.yml
+- type: Lifecycle
+  url: lifecycle/department-of-state-lifecycle.yml
+- type: Conformance
+  url: conformance/department-of-state-conformance.yml
+- type: Packages
+  url: packages/department-of-state-packages.yml
+- type: MCPServer
+  url: mcp/department-of-state-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/department-of-state-llms.txt
+- type: RateLimits
+  url: rate-limits/department-of-state-rate-limits.yml
+- type: Plans
+  url: plans/department-of-state-plans-pricing.yml
+- type: VulnerabilityDisclosure
+  url: security/department-of-state-vulnerability-disclosure.yml
+- type: Security
+  url: https://www.state.gov/bureau-of-diplomatic-technology/vulnerability-disclosure-policy
+- type: Documentation
+  url: https://history.state.gov/developer/catalog
+- type: DeveloperPortal
+  url: https://history.state.gov/developer
+- type: APIReference
+  url: https://www.state.gov/wp-json/
+- type: Support
+  url: https://www.state.gov/contact-us/
+- type: PrivacyPolicy
+  url: https://www.state.gov/privacy-policy
+- type: TermsOfService
+  url: https://www.state.gov/copyright-information
+- type: OpenData
+  url: https://www.state.gov/data.json
+apis:
+- aid: department-of-state:historian-ebook-catalog-api
+  name: Office of the Historian Ebook Catalog API
+  description: A RESTful, OPDS Catalog 1.1 feed of the Foreign Relations of the United States series —
+    the official documentary record of major U.S. foreign policy decisions — published by the Office of
+    the Historian. Four documented operations (catalog root, all volumes in series order, ten most recent,
+    subject browse, and Lucene free-text search) return Atom XML carrying acquisition links to EPUB, MOBI
+    and PDF editions plus cover images. No registration, no API key, no authentication. This is the only
+    surface the Department documents on a developer page of its own, and the source data behind it is
+    open on GitHub as TEI XML.
+  humanURL: https://history.state.gov/developer/catalog
+  baseURL: https://history.state.gov/api/v1
+  tags:
+  - History
+  - Publications
+  - OPDS
+  - Open Data
+  - Foreign Affairs
+  properties:
+  - type: Documentation
+    url: https://history.state.gov/developer/catalog
+  - type: DeveloperPortal
+    url: https://history.state.gov/developer
+  - type: GitHubOrganization
+    url: https://github.com/HistoryAtState
+  - type: Support
+    url: https://github.com/HistoryAtState/Feedback
+  - type: SourceCode
+    url: https://github.com/HistoryAtState/hsg-shell
+  - type: AgentSkill
+    url: skills/department-of-state-frus-ebook-catalog.md
+- aid: department-of-state:open-data-catalog
+  name: Department of State Open Data Catalog
+  description: The Department's Project Open Data catalog, served as a single machine-readable DCAT-US
+    3.0 document at https://www.state.gov/data.json. 397 dataset entries covering Foreign Relations metadata,
+    Humanitarian Information Unit cartography, passport and visa statistics, and international law digests,
+    each with distribution URLs. It is the Department's own index of what it publishes, and it is the
+    document that points at the Bureau of Consular Affairs data catalog at cadatacatalog.state.gov.
+  humanURL: https://catalog.data.gov/dataset?organization=state-gov
+  baseURL: https://www.state.gov/data.json
+  tags:
+  - Open Data
+  - DCAT
+  - Catalog
+  properties:
+  - type: OpenData
+    url: https://www.state.gov/data.json
+  - type: Documentation
+    url: https://catalog.data.gov/dataset?organization=state-gov
+  - type: Conformance
+    url: conformance/department-of-state-conformance.yml
+- aid: department-of-state:travel-advisories
+  name: State Department Travel Advisories
+  description: Country-by-country travel advisories (Levels 1-4) issued by the Bureau of Consular Affairs,
+    with RSS distribution.
+  humanURL: https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html
+  baseURL: https://travel.state.gov/_res/rss/TAsTWs.xml
+  tags:
+  - Travel
+  - Advisories
+  - RSS
+  properties:
+  - type: Documentation
+    url: https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html
+  - type: RSS
+    url: https://travel.state.gov/_res/rss/TAsTWs.xml
+- aid: department-of-state:country-information
+  name: Country Information Pages
+  description: Per-country pages covering entry/exit requirements, local laws, safety, health, and U.S.
+    embassy contacts.
+  humanURL: https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html
+  tags:
+  - Country
+  - Travel
+  properties:
+  - type: Documentation
+    url: https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html
+- aid: department-of-state:smart-traveler-enrollment-program
+  name: Smart Traveler Enrollment Program (STEP)
+  description: Voluntary enrollment system for U.S. citizens traveling or residing abroad to receive embassy
+    alerts.
+  humanURL: https://step.state.gov/
+  tags:
+  - Travel
+  - Citizen Services
+  properties:
+  - type: Documentation
+    url: https://step.state.gov/
+- aid: department-of-state:visa-information
+  name: U.S. Visa Information
+  description: Reference information on nonimmigrant and immigrant visa categories, processing times,
+    and reciprocity schedules.
+  humanURL: https://travel.state.gov/content/travel/en/us-visas.html
+  tags:
+  - Visas
+  properties:
+  - type: Documentation
+    url: https://travel.state.gov/content/travel/en/us-visas.html
+  - type: Reference
+    url: https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/fees/reciprocity-by-country.html
+- aid: department-of-state:passport-services
+  name: U.S. Passport Services
+  description: Public-facing passport application, renewal, and status-check resources from the Bureau
+    of Consular Affairs.
+  humanURL: https://travel.state.gov/content/travel/en/passports.html
+  tags:
+  - Passports
+  properties:
+  - type: Documentation
+    url: https://travel.state.gov/content/travel/en/passports.html
+  - type: StatusPage
+    url: https://travel.state.gov/content/travel/en/passports/need-passport/status.html
+- aid: department-of-state:foreign-affairs-manual
+  name: Foreign Affairs Manual (FAM) and Handbook (FAH)
+  description: Department-wide policy and procedural manuals issued by the Office of Directives Management.
+  humanURL: https://fam.state.gov/
+  tags:
+  - Policy
+  - Reference
+  properties:
+  - type: Documentation
+    url: https://fam.state.gov/
+- aid: department-of-state:consular-lookout-class
+  name: ConsularLookout (CLASS)
+  description: Government-internal name-check system used during visa and passport adjudication. Referenced
+    here for completeness; no public API.
+  humanURL: https://travel.state.gov/content/travel/en/legal/visa-law0.html
+  tags:
+  - Consular
+  - Internal
+  properties:
+  - type: Reference
+    url: https://travel.state.gov/content/travel/en/legal/visa-law0.html
+- aid: department-of-state:ecase
+  name: eCASE Enterprise Case Management
+  description: State Department-wide enterprise case-management platform. Internal system; referenced
+    here for organizational completeness.
+  humanURL: https://www.state.gov/
+  tags:
+  - Case Management
+  - Internal
+  properties:
+  - type: Reference
+    url: https://www.state.gov/
+- aid: department-of-state:state-data-gov
+  name: State Department Open Data on data.gov
+  description: Public datasets published by the State Department through the federal open-data catalog.
+  humanURL: https://catalog.data.gov/dataset?organization=state-gov
+  tags:
+  - Open Data
+  properties:
+  - type: Documentation
+    url: https://catalog.data.gov/dataset?organization=state-gov
+- aid: department-of-state:department-of-state-categories-api
+  name: Department of State Categories API
+  description: WordPress category taxonomy.
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - categories
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-categories-api-openapi.yml
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
   - type: Authentication
     url: authentication/department-of-state-authentication.yml
-  - type: Website
-    url: https://www.state.gov/
-  - type: DomainSecurity
-    url: security/department-of-state-domain-security.yml
-  - type: GitHubOrganization
-    url: https://github.com/usstatedept
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/statedept
-  - url: https://www.state.gov/
-    type: Portal
-  - url: https://travel.state.gov/
-    type: Portal
-  - url: https://fam.state.gov/
-    type: Reference
-  - type: OpenAPI
-    name: state.gov Content API (derived)
-    url: openapi/department-of-state-state-gov-content-openapi.yml
-  - type: JSONSchema
-    url: json-schema/_index.yml
-  - type: Overlay
-    url: overlays/department-of-state-state-gov-content-overlay.yaml
   - type: Conventions
     url: conventions/department-of-state-conventions.yml
   - type: ErrorCatalog
     url: errors/department-of-state-problem-types.yml
   - type: DataModel
     url: data-model/department-of-state-data-model.yml
-  - type: Lifecycle
-    url: lifecycle/department-of-state-lifecycle.yml
-  - type: Conformance
-    url: conformance/department-of-state-conformance.yml
-  - type: Packages
-    url: packages/department-of-state-packages.yml
-  - type: MCPServer
-    url: mcp/department-of-state-mcp.yml
-  - type: AgentSkill
-    url: skills/_index.yml
-  - type: LLMsTxt
-    url: llms/department-of-state-llms.txt
-  - type: RateLimits
-    url: rate-limits/department-of-state-rate-limits.yml
-  - type: Plans
-    url: plans/department-of-state-plans-pricing.yml
-  - type: VulnerabilityDisclosure
-    url: security/department-of-state-vulnerability-disclosure.yml
-  - type: Security
-    url: https://www.state.gov/bureau-of-diplomatic-technology/vulnerability-disclosure-policy
+  - type: JSONSchema
+    url: json-schema/_index.yml
   - type: Documentation
-    url: https://history.state.gov/developer/catalog
-  - type: DeveloperPortal
-    url: https://history.state.gov/developer
+    url: https://developer.wordpress.org/rest-api/
+- aid: department-of-state:department-of-state-media-api
+  name: Department of State Media API
+  description: Media library attachments (images, PDFs, video posters).
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - media
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-media-api-openapi.yml
   - type: APIReference
     url: https://www.state.gov/wp-json/
-  - type: Support
-    url: https://www.state.gov/contact-us/
-  - type: PrivacyPolicy
-    url: https://www.state.gov/privacy-policy
-  - type: TermsOfService
-    url: https://www.state.gov/copyright-information
-  - type: OpenData
-    url: https://www.state.gov/data.json
-apis:
-  - aid: department-of-state:state-gov-content-api
-    name: state.gov Content API
-    description: >-
-      The Department of State runs www.state.gov on WordPress and exposes the WordPress REST API
-      anonymously at https://www.state.gov/wp-json. Alongside the core WordPress resources the
-      Department registers its own content types and taxonomies — state_press_release,
-      state_briefing, state_report, state_biography, state_bureau, state_country,
-      state_policy_issue, state_trip_travel and sixteen more — giving structured JSON access to
-      press releases, press briefings, the flagship annual reports, principal biographies, bureau
-      pages and country and policy landing content. 473 routes are advertised in the index; 65 read
-      operations are public with no key, no registration and no quota. Write operations exist but
-      require a Department editorial account. The Department publishes no OpenAPI; the description
-      in this repo was derived mechanically from its own route index and OPTIONS schemas.
-    humanURL: https://www.state.gov/
-    baseURL: https://www.state.gov/wp-json
-    tags:
-      - Content
-      - Press Releases
-      - Reports
-      - Foreign Affairs
-      - WordPress
-    properties:
-      - type: OpenAPI
-        url: openapi/department-of-state-state-gov-content-openapi.yml
-      - type: APIReference
-        url: https://www.state.gov/wp-json/
-      - type: Authentication
-        url: authentication/department-of-state-authentication.yml
-      - type: Conventions
-        url: conventions/department-of-state-conventions.yml
-      - type: ErrorCatalog
-        url: errors/department-of-state-problem-types.yml
-      - type: DataModel
-        url: data-model/department-of-state-data-model.yml
-      - type: JSONSchema
-        url: json-schema/_index.yml
-      - type: Overlay
-        url: overlays/department-of-state-state-gov-content-overlay.yaml
-      - type: AgentSkill
-        url: skills/_index.yml
-      - type: Documentation
-        url: https://developer.wordpress.org/rest-api/
-  - aid: department-of-state:historian-ebook-catalog-api
-    name: Office of the Historian Ebook Catalog API
-    description: >-
-      A RESTful, OPDS Catalog 1.1 feed of the Foreign Relations of the United States series — the
-      official documentary record of major U.S. foreign policy decisions — published by the Office
-      of the Historian. Four documented operations (catalog root, all volumes in series order, ten
-      most recent, subject browse, and Lucene free-text search) return Atom XML carrying acquisition
-      links to EPUB, MOBI and PDF editions plus cover images. No registration, no API key, no
-      authentication. This is the only surface the Department documents on a developer page of its
-      own, and the source data behind it is open on GitHub as TEI XML.
-    humanURL: https://history.state.gov/developer/catalog
-    baseURL: https://history.state.gov/api/v1
-    tags:
-      - History
-      - Publications
-      - OPDS
-      - Open Data
-      - Foreign Affairs
-    properties:
-      - type: Documentation
-        url: https://history.state.gov/developer/catalog
-      - type: DeveloperPortal
-        url: https://history.state.gov/developer
-      - type: GitHubOrganization
-        url: https://github.com/HistoryAtState
-      - type: Support
-        url: https://github.com/HistoryAtState/Feedback
-      - type: SourceCode
-        url: https://github.com/HistoryAtState/hsg-shell
-      - type: AgentSkill
-        url: skills/department-of-state-frus-ebook-catalog.md
-  - aid: department-of-state:open-data-catalog
-    name: Department of State Open Data Catalog
-    description: >-
-      The Department's Project Open Data catalog, served as a single machine-readable DCAT-US 3.0
-      document at https://www.state.gov/data.json. 397 dataset entries covering Foreign Relations
-      metadata, Humanitarian Information Unit cartography, passport and visa statistics, and
-      international law digests, each with distribution URLs. It is the Department's own index of
-      what it publishes, and it is the document that points at the Bureau of Consular Affairs data
-      catalog at cadatacatalog.state.gov.
-    humanURL: https://catalog.data.gov/dataset?organization=state-gov
-    baseURL: https://www.state.gov/data.json
-    tags:
-      - Open Data
-      - DCAT
-      - Catalog
-    properties:
-      - type: OpenData
-        url: https://www.state.gov/data.json
-      - type: Documentation
-        url: https://catalog.data.gov/dataset?organization=state-gov
-      - type: Conformance
-        url: conformance/department-of-state-conformance.yml
-  - aid: department-of-state:travel-advisories
-    name: State Department Travel Advisories
-    description: >-
-      Country-by-country travel advisories (Levels 1-4) issued by the Bureau
-      of Consular Affairs, with RSS distribution.
-    humanURL: https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html
-    baseURL: https://travel.state.gov/_res/rss/TAsTWs.xml
-    tags:
-      - Travel
-      - Advisories
-      - RSS
-    properties:
-      - type: Documentation
-        url: https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html
-      - type: RSS
-        url: https://travel.state.gov/_res/rss/TAsTWs.xml
-  - aid: department-of-state:country-information
-    name: Country Information Pages
-    description: >-
-      Per-country pages covering entry/exit requirements, local laws, safety,
-      health, and U.S. embassy contacts.
-    humanURL: https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html
-    tags:
-      - Country
-      - Travel
-    properties:
-      - type: Documentation
-        url: https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html
-  - aid: department-of-state:smart-traveler-enrollment-program
-    name: Smart Traveler Enrollment Program (STEP)
-    description: >-
-      Voluntary enrollment system for U.S. citizens traveling or residing
-      abroad to receive embassy alerts.
-    humanURL: https://step.state.gov/
-    tags:
-      - Travel
-      - Citizen Services
-    properties:
-      - type: Documentation
-        url: https://step.state.gov/
-  - aid: department-of-state:visa-information
-    name: U.S. Visa Information
-    description: >-
-      Reference information on nonimmigrant and immigrant visa categories,
-      processing times, and reciprocity schedules.
-    humanURL: https://travel.state.gov/content/travel/en/us-visas.html
-    tags:
-      - Visas
-    properties:
-      - type: Documentation
-        url: https://travel.state.gov/content/travel/en/us-visas.html
-      - type: Reference
-        url: https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/fees/reciprocity-by-country.html
-  - aid: department-of-state:passport-services
-    name: U.S. Passport Services
-    description: >-
-      Public-facing passport application, renewal, and status-check resources
-      from the Bureau of Consular Affairs.
-    humanURL: https://travel.state.gov/content/travel/en/passports.html
-    tags:
-      - Passports
-    properties:
-      - type: Documentation
-        url: https://travel.state.gov/content/travel/en/passports.html
-      - type: StatusPage
-        url: https://travel.state.gov/content/travel/en/passports/need-passport/status.html
-  - aid: department-of-state:foreign-affairs-manual
-    name: Foreign Affairs Manual (FAM) and Handbook (FAH)
-    description: >-
-      Department-wide policy and procedural manuals issued by the Office of
-      Directives Management.
-    humanURL: https://fam.state.gov/
-    tags:
-      - Policy
-      - Reference
-    properties:
-      - type: Documentation
-        url: https://fam.state.gov/
-  - aid: department-of-state:consular-lookout-class
-    name: ConsularLookout (CLASS)
-    description: >-
-      Government-internal name-check system used during visa and passport
-      adjudication. Referenced here for completeness; no public API.
-    humanURL: https://travel.state.gov/content/travel/en/legal/visa-law0.html
-    tags:
-      - Consular
-      - Internal
-    properties:
-      - type: Reference
-        url: https://travel.state.gov/content/travel/en/legal/visa-law0.html
-  - aid: department-of-state:ecase
-    name: eCASE Enterprise Case Management
-    description: >-
-      State Department-wide enterprise case-management platform. Internal
-      system; referenced here for organizational completeness.
-    humanURL: https://www.state.gov/
-    tags:
-      - Case Management
-      - Internal
-    properties:
-      - type: Reference
-        url: https://www.state.gov/
-  - aid: department-of-state:state-data-gov
-    name: State Department Open Data on data.gov
-    description: >-
-      Public datasets published by the State Department through the federal
-      open-data catalog.
-    humanURL: https://catalog.data.gov/dataset?organization=state-gov
-    tags:
-      - Open Data
-    properties:
-      - type: Documentation
-        url: https://catalog.data.gov/dataset?organization=state-gov
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+- aid: department-of-state:department-of-state-pages-api
+  name: Department of State Pages API
+  description: state.gov pages.
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - pages
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-pages-api-openapi.yml
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+- aid: department-of-state:department-of-state-posts-api
+  name: Department of State Posts API
+  description: WordPress posts.
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - posts
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-posts-api-openapi.yml
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+- aid: department-of-state:department-of-state-search-api
+  name: Department of State Search API
+  description: Cross-content search across state.gov content types.
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - search
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-search-api-openapi.yml
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+- aid: department-of-state:department-of-state-state-archive-tags-api
+  name: Department of State State Archive Tags API
+  description: Archive tag taxonomy.
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - state_archive_tags
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-state-archive-tags-api-openapi.yml
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+- aid: department-of-state:department-of-state-state-author-groups-api
+  name: Department of State State Author Groups API
+  description: Author group taxonomy.
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - state_author_groups
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-state-author-groups-api-openapi.yml
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+- aid: department-of-state:department-of-state-state-biography-api
+  name: Department of State State Biography API
+  description: Biographies of Department principals and officials.
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - state_biography
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-state-biography-api-openapi.yml
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+- aid: department-of-state:department-of-state-state-biography-types-api
+  name: Department of State State Biography Types API
+  description: Biography type taxonomy.
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - state_biography_types
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-state-biography-types-api-openapi.yml
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+- aid: department-of-state:department-of-state-state-briefing-api
+  name: Department of State State Briefing API
+  description: Press briefings, remarks and transcripts.
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - state_briefing
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-state-briefing-api-openapi.yml
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+- aid: department-of-state:department-of-state-state-briefing-type-api
+  name: Department of State State Briefing Type API
+  description: Briefing type taxonomy.
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - state_briefing_type
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-state-briefing-type-api-openapi.yml
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+- aid: department-of-state:department-of-state-state-bureau-api
+  name: Department of State State Bureau API
+  description: Bureaus and offices of the Department of State.
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - state_bureau
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-state-bureau-api-openapi.yml
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+- aid: department-of-state:department-of-state-state-countries-and-areas-api
+  name: Department of State State Countries And Areas API
+  description: Countries and areas taxonomy.
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - state_countries_and_areas
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-state-countries-and-areas-api-openapi.yml
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+- aid: department-of-state:department-of-state-state-country-api
+  name: Department of State State Country API
+  description: Country and area landing content.
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - state_country
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-state-country-api-openapi.yml
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+- aid: department-of-state:department-of-state-state-document-type-api
+  name: Department of State State Document Type API
+  description: Document type taxonomy.
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - state_document_type
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-state-document-type-api-openapi.yml
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+- aid: department-of-state:department-of-state-state-ext-content-api
+  name: Department of State State Ext Content API
+  description: Externally sourced content syndicated onto state.gov.
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - state_ext_content
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-state-ext-content-api-openapi.yml
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+- aid: department-of-state:department-of-state-state-live-draft-tags-api
+  name: Department of State State Live Draft Tags API
+  description: Live draft tag taxonomy.
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - state_live_draft_tags
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-state-live-draft-tags-api-openapi.yml
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+- aid: department-of-state:department-of-state-state-people-api
+  name: Department of State State People API
+  description: People records used across state.gov.
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - state_people
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-state-people-api-openapi.yml
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+- aid: department-of-state:department-of-state-state-policy-issue-api
+  name: Department of State State Policy Issue API
+  description: Policy issue landing content.
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - state_policy_issue
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-state-policy-issue-api-openapi.yml
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+- aid: department-of-state:department-of-state-state-policy-issues-api
+  name: Department of State State Policy Issues API
+  description: Policy issues taxonomy.
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - state_policy_issues
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-state-policy-issues-api-openapi.yml
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+- aid: department-of-state:department-of-state-state-press-release-api
+  name: Department of State State Press Release API
+  description: Press releases issued by the Office of the Spokesperson and Department bureaus.
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - state_press_release
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-state-press-release-api-openapi.yml
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+- aid: department-of-state:department-of-state-state-report-api
+  name: Department of State State Report API
+  description: Department reports (human rights, religious freedom, trafficking in persons, and others).
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - state_report
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-state-report-api-openapi.yml
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+- aid: department-of-state:department-of-state-state-report-types-api
+  name: Department of State State Report Types API
+  description: Report type taxonomy.
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - state_report_types
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-state-report-types-api-openapi.yml
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+- aid: department-of-state:department-of-state-state-rss-feeds-api
+  name: Department of State State Rss Feeds API
+  description: Configured RSS feed definitions.
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - state_rss_feeds
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-state-rss-feeds-api-openapi.yml
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+- aid: department-of-state:department-of-state-state-standard-land-api
+  name: Department of State State Standard Land API
+  description: Standard landing pages.
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - state_standard_land
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-state-standard-land-api-openapi.yml
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+- aid: department-of-state:department-of-state-state-state-api
+  name: Department of State State State API
+  description: State (U.S. state) content type.
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - state_state
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-state-state-api-openapi.yml
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+- aid: department-of-state:department-of-state-state-states-api
+  name: Department of State State States API
+  description: U.S. states taxonomy.
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - state_states
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-state-states-api-openapi.yml
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+- aid: department-of-state:department-of-state-state-subjects-api
+  name: Department of State State Subjects API
+  description: Subject taxonomy.
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - state_subjects
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-state-subjects-api-openapi.yml
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+- aid: department-of-state:department-of-state-state-term-coll-api
+  name: Department of State State Term Coll API
+  description: Term collection content.
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - state_term_coll
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-state-term-coll-api-openapi.yml
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+- aid: department-of-state:department-of-state-state-trip-travel-api
+  name: Department of State State Trip Travel API
+  description: Official travel by the Secretary and other principals.
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - state_trip_travel
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-state-trip-travel-api-openapi.yml
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+- aid: department-of-state:department-of-state-state-years-api
+  name: Department of State State Years API
+  description: Year taxonomy.
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - state_years
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-state-years-api-openapi.yml
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+- aid: department-of-state:department-of-state-tags-api
+  name: Department of State Tags API
+  description: WordPress post tag taxonomy.
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - tags
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-tags-api-openapi.yml
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+- aid: department-of-state:department-of-state-taxonomies-api
+  name: Department of State Taxonomies API
+  description: Registered taxonomies and their REST bases.
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - taxonomies
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-taxonomies-api-openapi.yml
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
+- aid: department-of-state:department-of-state-types-api
+  name: Department of State Types API
+  description: Registered content types and their REST bases.
+  humanURL: https://www.state.gov/
+  baseURL: https://www.state.gov/wp-json
+  tags:
+  - types
+  properties:
+  - type: OpenAPI
+    url: openapi/department-of-state-types-api-openapi.yml
+  - type: APIReference
+    url: https://www.state.gov/wp-json/
+  - type: Authentication
+    url: authentication/department-of-state-authentication.yml
+  - type: Conventions
+    url: conventions/department-of-state-conventions.yml
+  - type: ErrorCatalog
+    url: errors/department-of-state-problem-types.yml
+  - type: DataModel
+    url: data-model/department-of-state-data-model.yml
+  - type: JSONSchema
+    url: json-schema/_index.yml
+  - type: Documentation
+    url: https://developer.wordpress.org/rest-api/
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
 x-enrichment:
   date: '2026-09-07'
   status: enriched
