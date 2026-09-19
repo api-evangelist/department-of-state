@@ -48,7 +48,7 @@ tags:
 - Foreign Affairs
 - Travel
 - Consular
-- Visas
+- Visa
 - Passports
 tags_raw:
 - Federal Government
@@ -223,6 +223,8 @@ apis:
     and reciprocity schedules.
   humanURL: https://travel.state.gov/content/travel/en/us-visas.html
   tags:
+  - Visa
+  tags_raw:
   - Visas
   properties:
   - type: Documentation
@@ -288,6 +290,8 @@ apis:
   humanURL: https://www.state.gov/
   baseURL: https://www.state.gov/wp-json
   tags:
+  - Categories
+  tags_raw:
   - categories
   properties:
   - type: OpenAPI
@@ -312,6 +316,8 @@ apis:
   humanURL: https://www.state.gov/
   baseURL: https://www.state.gov/wp-json
   tags:
+  - Media
+  tags_raw:
   - media
   properties:
   - type: OpenAPI
@@ -336,6 +342,8 @@ apis:
   humanURL: https://www.state.gov/
   baseURL: https://www.state.gov/wp-json
   tags:
+  - Pages
+  tags_raw:
   - pages
   properties:
   - type: OpenAPI
@@ -360,6 +368,8 @@ apis:
   humanURL: https://www.state.gov/
   baseURL: https://www.state.gov/wp-json
   tags:
+  - Posts
+  tags_raw:
   - posts
   properties:
   - type: OpenAPI
@@ -384,6 +394,8 @@ apis:
   humanURL: https://www.state.gov/
   baseURL: https://www.state.gov/wp-json
   tags:
+  - Search
+  tags_raw:
   - search
   properties:
   - type: OpenAPI
@@ -407,7 +419,8 @@ apis:
   description: Archive tag taxonomy.
   humanURL: https://www.state.gov/
   baseURL: https://www.state.gov/wp-json
-  tags:
+  tags: []
+  tags_raw:
   - state_archive_tags
   properties:
   - type: OpenAPI
@@ -431,7 +444,8 @@ apis:
   description: Author group taxonomy.
   humanURL: https://www.state.gov/
   baseURL: https://www.state.gov/wp-json
-  tags:
+  tags: []
+  tags_raw:
   - state_author_groups
   properties:
   - type: OpenAPI
@@ -455,7 +469,8 @@ apis:
   description: Biographies of Department principals and officials.
   humanURL: https://www.state.gov/
   baseURL: https://www.state.gov/wp-json
-  tags:
+  tags: []
+  tags_raw:
   - state_biography
   properties:
   - type: OpenAPI
@@ -479,7 +494,8 @@ apis:
   description: Biography type taxonomy.
   humanURL: https://www.state.gov/
   baseURL: https://www.state.gov/wp-json
-  tags:
+  tags: []
+  tags_raw:
   - state_biography_types
   properties:
   - type: OpenAPI
@@ -503,7 +519,8 @@ apis:
   description: Press briefings, remarks and transcripts.
   humanURL: https://www.state.gov/
   baseURL: https://www.state.gov/wp-json
-  tags:
+  tags: []
+  tags_raw:
   - state_briefing
   properties:
   - type: OpenAPI
@@ -527,7 +544,8 @@ apis:
   description: Briefing type taxonomy.
   humanURL: https://www.state.gov/
   baseURL: https://www.state.gov/wp-json
-  tags:
+  tags: []
+  tags_raw:
   - state_briefing_type
   properties:
   - type: OpenAPI
@@ -551,7 +569,8 @@ apis:
   description: Bureaus and offices of the Department of State.
   humanURL: https://www.state.gov/
   baseURL: https://www.state.gov/wp-json
-  tags:
+  tags: []
+  tags_raw:
   - state_bureau
   properties:
   - type: OpenAPI
@@ -575,7 +594,8 @@ apis:
   description: Countries and areas taxonomy.
   humanURL: https://www.state.gov/
   baseURL: https://www.state.gov/wp-json
-  tags:
+  tags: []
+  tags_raw:
   - state_countries_and_areas
   properties:
   - type: OpenAPI
@@ -599,7 +619,8 @@ apis:
   description: Country and area landing content.
   humanURL: https://www.state.gov/
   baseURL: https://www.state.gov/wp-json
-  tags:
+  tags: []
+  tags_raw:
   - state_country
   properties:
   - type: OpenAPI
@@ -623,7 +644,8 @@ apis:
   description: Document type taxonomy.
   humanURL: https://www.state.gov/
   baseURL: https://www.state.gov/wp-json
-  tags:
+  tags: []
+  tags_raw:
   - state_document_type
   properties:
   - type: OpenAPI
@@ -647,7 +669,8 @@ apis:
   description: Externally sourced content syndicated onto state.gov.
   humanURL: https://www.state.gov/
   baseURL: https://www.state.gov/wp-json
-  tags:
+  tags: []
+  tags_raw:
   - state_ext_content
   properties:
   - type: OpenAPI
@@ -671,7 +694,8 @@ apis:
   description: Live draft tag taxonomy.
   humanURL: https://www.state.gov/
   baseURL: https://www.state.gov/wp-json
-  tags:
+  tags: []
+  tags_raw:
   - state_live_draft_tags
   properties:
   - type: OpenAPI
@@ -695,7 +719,8 @@ apis:
   description: People records used across state.gov.
   humanURL: https://www.state.gov/
   baseURL: https://www.state.gov/wp-json
-  tags:
+  tags: []
+  tags_raw:
   - state_people
   properties:
   - type: OpenAPI
@@ -719,7 +744,8 @@ apis:
   description: Policy issue landing content.
   humanURL: https://www.state.gov/
   baseURL: https://www.state.gov/wp-json
-  tags:
+  tags: []
+  tags_raw:
   - state_policy_issue
   properties:
   - type: OpenAPI
@@ -743,7 +769,8 @@ apis:
   description: Policy issues taxonomy.
   humanURL: https://www.state.gov/
   baseURL: https://www.state.gov/wp-json
-  tags:
+  tags: []
+  tags_raw:
   - state_policy_issues
   properties:
   - type: OpenAPI
@@ -767,7 +794,8 @@ apis:
   description: Press releases issued by the Office of the Spokesperson and Department bureaus.
   humanURL: https://www.state.gov/
   baseURL: https://www.state.gov/wp-json
-  tags:
+  tags: []
+  tags_raw:
   - state_press_release
   properties:
   - type: OpenAPI
@@ -791,7 +819,8 @@ apis:
   description: Department reports (human rights, religious freedom, trafficking in persons, and others).
   humanURL: https://www.state.gov/
   baseURL: https://www.state.gov/wp-json
-  tags:
+  tags: []
+  tags_raw:
   - state_report
   properties:
   - type: OpenAPI
@@ -815,7 +844,8 @@ apis:
   description: Report type taxonomy.
   humanURL: https://www.state.gov/
   baseURL: https://www.state.gov/wp-json
-  tags:
+  tags: []
+  tags_raw:
   - state_report_types
   properties:
   - type: OpenAPI
@@ -839,7 +869,8 @@ apis:
   description: Configured RSS feed definitions.
   humanURL: https://www.state.gov/
   baseURL: https://www.state.gov/wp-json
-  tags:
+  tags: []
+  tags_raw:
   - state_rss_feeds
   properties:
   - type: OpenAPI
@@ -863,7 +894,8 @@ apis:
   description: Standard landing pages.
   humanURL: https://www.state.gov/
   baseURL: https://www.state.gov/wp-json
-  tags:
+  tags: []
+  tags_raw:
   - state_standard_land
   properties:
   - type: OpenAPI
@@ -887,7 +919,8 @@ apis:
   description: State (U.S. state) content type.
   humanURL: https://www.state.gov/
   baseURL: https://www.state.gov/wp-json
-  tags:
+  tags: []
+  tags_raw:
   - state_state
   properties:
   - type: OpenAPI
@@ -911,7 +944,8 @@ apis:
   description: U.S. states taxonomy.
   humanURL: https://www.state.gov/
   baseURL: https://www.state.gov/wp-json
-  tags:
+  tags: []
+  tags_raw:
   - state_states
   properties:
   - type: OpenAPI
@@ -935,7 +969,8 @@ apis:
   description: Subject taxonomy.
   humanURL: https://www.state.gov/
   baseURL: https://www.state.gov/wp-json
-  tags:
+  tags: []
+  tags_raw:
   - state_subjects
   properties:
   - type: OpenAPI
@@ -959,7 +994,8 @@ apis:
   description: Term collection content.
   humanURL: https://www.state.gov/
   baseURL: https://www.state.gov/wp-json
-  tags:
+  tags: []
+  tags_raw:
   - state_term_coll
   properties:
   - type: OpenAPI
@@ -983,7 +1019,8 @@ apis:
   description: Official travel by the Secretary and other principals.
   humanURL: https://www.state.gov/
   baseURL: https://www.state.gov/wp-json
-  tags:
+  tags: []
+  tags_raw:
   - state_trip_travel
   properties:
   - type: OpenAPI
@@ -1007,7 +1044,8 @@ apis:
   description: Year taxonomy.
   humanURL: https://www.state.gov/
   baseURL: https://www.state.gov/wp-json
-  tags:
+  tags: []
+  tags_raw:
   - state_years
   properties:
   - type: OpenAPI
@@ -1032,6 +1070,8 @@ apis:
   humanURL: https://www.state.gov/
   baseURL: https://www.state.gov/wp-json
   tags:
+  - Tags
+  tags_raw:
   - tags
   properties:
   - type: OpenAPI
@@ -1080,6 +1120,8 @@ apis:
   humanURL: https://www.state.gov/
   baseURL: https://www.state.gov/wp-json
   tags:
+  - Types
+  tags_raw:
   - types
   properties:
   - type: OpenAPI
