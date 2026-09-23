@@ -1,0 +1,1101 @@
+openapi: 3.2.0
+info:
+  title: U.S.
+  version: wp/v2
+  summary: Public, unauthenticated read access to state.gov press releases, briefings, reports, biographies, bureaus, country pages and policy issues.
+  description: The Department of State publishes www.state.gov on WordPress and exposes the WordPress REST API at https://www.state.gov/wp-json.
+  contact:
+    name: U.S. Department of State
+    url: https://www.state.gov/
+  license:
+    name: U.S. Government Work (17 U.S.C. 105) — see the state.gov copyright notice
+    url: https://www.state.gov/copyright-information/
+servers:
+- url: https://www.state.gov/wp-json
+  description: Production state.gov WordPress REST API.
+security: []
+tags:
+- name: state_country
+  description: Country and area landing content.
+paths:
+  /wp/v2/state_country:
+    get:
+      operationId: listStateCountry
+      summary: List state_country
+      description: Country and area landing content. Returns a JSON array; total counts are carried in the X-WP-Total and X-WP-TotalPages response headers.
+      tags:
+      - state_country
+      security: []
+      parameters:
+      - name: context
+        in: query
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      - name: page
+        in: query
+        description: Current page of the collection.
+        schema:
+          type: integer
+          default: 1
+          minimum: 1
+      - name: per_page
+        in: query
+        description: Maximum number of items to be returned in result set.
+        schema:
+          type: integer
+          default: 10
+          minimum: 1
+          maximum: 100
+      - name: search
+        in: query
+        description: Limit results to those matching a string.
+        schema:
+          type: string
+      - name: after
+        in: query
+        description: Limit response to posts published after a given ISO8601 compliant date.
+        schema:
+          type: string
+          format: date-time
+      - name: modified_after
+        in: query
+        description: Limit response to posts modified after a given ISO8601 compliant date.
+        schema:
+          type: string
+          format: date-time
+      - name: before
+        in: query
+        description: Limit response to posts published before a given ISO8601 compliant date.
+        schema:
+          type: string
+          format: date-time
+      - name: modified_before
+        in: query
+        description: Limit response to posts modified before a given ISO8601 compliant date.
+        schema:
+          type: string
+          format: date-time
+      - name: exclude
+        in: query
+        description: Ensure result set excludes specific IDs.
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: include
+        in: query
+        description: Limit result set to specific IDs.
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: search_semantics
+        in: query
+        description: How to interpret the search input.
+        schema:
+          type: string
+          enum:
+          - exact
+      - name: offset
+        in: query
+        description: Offset the result set by a specific number of items.
+        schema:
+          type: integer
+      - name: order
+        in: query
+        description: Order sort attribute ascending or descending.
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+      - name: orderby
+        in: query
+        description: Sort collection by post attribute.
+        schema:
+          type: string
+          enum:
+          - author
+          - date
+          - id
+          - include
+          - modified
+          - parent
+          - relevance
+          - slug
+          - include_slugs
+          - title
+          default: date
+      - name: parent
+        in: query
+        description: Limit result set to items with particular parent IDs.
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: parent_exclude
+        in: query
+        description: Limit result set to all items except those of a particular parent ID.
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: search_columns
+        in: query
+        description: Array of column names to be searched.
+        schema:
+          type: array
+          default: []
+          items:
+            enum:
+            - post_title
+            - post_content
+            - post_excerpt
+            type: string
+      - name: slug
+        in: query
+        description: Limit result set to posts with one or more specific slugs.
+        schema:
+          type: array
+          items:
+            type: string
+      - name: status
+        in: query
+        description: Limit result set to posts assigned one or more statuses.
+        schema:
+          type: array
+          default: publish
+          items:
+            enum:
+            - publish
+            - future
+            - draft
+            - pending
+            - private
+            - trash
+            - auto-draft
+            - inherit
+            - request-pending
+            - request-confirmed
+            - request-failed
+            - request-completed
+            - acf-disabled
+            - congress
+            - press
+            - dp-rewrite-republish
+            - any
+            type: string
+      - name: tax_relation
+        in: query
+        description: Limit result set based on relationship between multiple taxonomies.
+        schema:
+          type: string
+          enum:
+          - AND
+          - OR
+      - name: state_author_groups
+        in: query
+        description: Limit result set to items with specific terms assigned in the state_author_groups taxonomy.
+        schema:
+          type:
+          - object
+          - array
+      - name: state_author_groups_exclude
+        in: query
+        description: Limit result set to items except those with specific terms assigned in the state_author_groups taxonomy.
+        schema:
+          type:
+          - object
+          - array
+      - name: state_countries_and_areas
+        in: query
+        description: Limit result set to items with specific terms assigned in the state_countries_and_areas taxonomy.
+        schema:
+          type:
+          - object
+          - array
+      - name: state_countries_and_areas_exclude
+        in: query
+        description: Limit result set to items except those with specific terms assigned in the state_countries_and_areas taxonomy.
+        schema:
+          type:
+          - object
+          - array
+      - name: state_policy_issues
+        in: query
+        description: Limit result set to items with specific terms assigned in the state_policy_issues taxonomy.
+        schema:
+          type:
+          - object
+          - array
+      - name: state_policy_issues_exclude
+        in: query
+        description: Limit result set to items except those with specific terms assigned in the state_policy_issues taxonomy.
+        schema:
+          type:
+          - object
+          - array
+      - name: state_states
+        in: query
+        description: Limit result set to items with specific terms assigned in the state_states taxonomy.
+        schema:
+          type:
+          - object
+          - array
+      - name: state_states_exclude
+        in: query
+        description: Limit result set to items except those with specific terms assigned in the state_states taxonomy.
+        schema:
+          type:
+          - object
+          - array
+      - name: state_archive_tags
+        in: query
+        description: Limit result set to items with specific terms assigned in the state_archive_tags taxonomy.
+        schema:
+          type:
+          - object
+          - array
+      - name: state_archive_tags_exclude
+        in: query
+        description: Limit result set to items except those with specific terms assigned in the state_archive_tags taxonomy.
+        schema:
+          type:
+          - object
+          - array
+      - name: state_live_draft_tags
+        in: query
+        description: Limit result set to items with specific terms assigned in the state_live_draft_tags taxonomy.
+        schema:
+          type:
+          - object
+          - array
+      - name: state_live_draft_tags_exclude
+        in: query
+        description: Limit result set to items except those with specific terms assigned in the state_live_draft_tags taxonomy.
+        schema:
+          type:
+          - object
+          - array
+      - name: state_rss_feeds
+        in: query
+        description: Limit result set to items with specific terms assigned in the state_rss_feeds taxonomy.
+        schema:
+          type:
+          - object
+          - array
+      - name: state_rss_feeds_exclude
+        in: query
+        description: Limit result set to items except those with specific terms assigned in the state_rss_feeds taxonomy.
+        schema:
+          type:
+          - object
+          - array
+      responses:
+        '200':
+          description: A collection of state_country items.
+          headers:
+            X-WP-Total:
+              description: Total number of matching items.
+              schema:
+                type: integer
+            X-WP-TotalPages:
+              description: Total number of pages available.
+              schema:
+                type: integer
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StateCountry'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: createStateCountry
+      summary: Create a state_country item
+      description: Create a new state_country item. Requires an authenticated editorial account; anonymous callers receive 401.
+      tags:
+      - state_country
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  description: The date the post was published, in the site's timezone.
+                  type:
+                  - string
+                  - 'null'
+                  format: date-time
+                date_gmt:
+                  description: The date the post was published, as GMT.
+                  type:
+                  - string
+                  - 'null'
+                  format: date-time
+                slug:
+                  description: An alphanumeric identifier for the post unique to its type.
+                  type: string
+                status:
+                  description: A named status for the post.
+                  type: string
+                  enum:
+                  - publish
+                  - future
+                  - draft
+                  - pending
+                  - private
+                  - acf-disabled
+                  - congress
+                  - press
+                password:
+                  description: A password to protect access to the content and excerpt.
+                  type: string
+                parent:
+                  description: The ID for the parent of the post.
+                  type: integer
+                title:
+                  description: The title for the post.
+                  type: object
+                  properties:
+                    raw:
+                      description: Title for the post, as it exists in the database.
+                      type: string
+                    rendered:
+                      description: HTML title for the post, transformed for display.
+                      type: string
+                      readOnly: true
+                content:
+                  description: The content for the post.
+                  type: object
+                  properties:
+                    raw:
+                      description: Content for the post, as it exists in the database.
+                      type: string
+                    rendered:
+                      description: HTML content for the post, transformed for display.
+                      type: string
+                      readOnly: true
+                    block_version:
+                      description: Version of the content block format used by the post.
+                      type: integer
+                      readOnly: true
+                    protected:
+                      description: Whether the content is protected with a password.
+                      type: boolean
+                      readOnly: true
+                excerpt:
+                  description: The excerpt for the post.
+                  type: object
+                  properties:
+                    raw:
+                      description: Excerpt for the post, as it exists in the database.
+                      type: string
+                    rendered:
+                      description: HTML excerpt for the post, transformed for display.
+                      type: string
+                      readOnly: true
+                    protected:
+                      description: Whether the excerpt is protected with a password.
+                      type: boolean
+                      readOnly: true
+                template:
+                  description: The theme file to use to display the post.
+                  type: string
+                state_author_groups:
+                  description: The terms assigned to the post in the state_author_groups taxonomy.
+                  type: array
+                  items:
+                    type: integer
+                state_countries_and_areas:
+                  description: The terms assigned to the post in the state_countries_and_areas taxonomy.
+                  type: array
+                  items:
+                    type: integer
+                state_policy_issues:
+                  description: The terms assigned to the post in the state_policy_issues taxonomy.
+                  type: array
+                  items:
+                    type: integer
+                state_states:
+                  description: The terms assigned to the post in the state_states taxonomy.
+                  type: array
+                  items:
+                    type: integer
+                state_archive_tags:
+                  description: The terms assigned to the post in the state_archive_tags taxonomy.
+                  type: array
+                  items:
+                    type: integer
+                state_live_draft_tags:
+                  description: The terms assigned to the post in the state_live_draft_tags taxonomy.
+                  type: array
+                  items:
+                    type: integer
+                state_rss_feeds:
+                  description: The terms assigned to the post in the state_rss_feeds taxonomy.
+                  type: array
+                  items:
+                    type: integer
+                acf:
+                  description: ACF field data
+                  type: object
+      responses:
+        '201':
+          description: Created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StateCountry'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /wp/v2/state_country/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      description: Unique identifier for the state_country item.
+      schema:
+        type: integer
+    get:
+      operationId: getStateCountry
+      summary: Retrieve a state_country item
+      tags:
+      - state_country
+      security: []
+      description: Retrieve a single state_country item by numeric id.
+      parameters:
+      - name: context
+        in: query
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      - name: excerpt_length
+        in: query
+        description: Override the default excerpt length.
+        schema:
+          type: integer
+      - name: password
+        in: query
+        description: The password for the post if it is password protected.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The requested item.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StateCountry'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateStateCountry
+      summary: Update a state_country item
+      tags:
+      - state_country
+      description: Update an existing state_country item. Requires an authenticated editorial account. WordPress accepts POST, PUT or PATCH for this operation.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  description: The date the post was published, in the site's timezone.
+                  type:
+                  - string
+                  - 'null'
+                  format: date-time
+                date_gmt:
+                  description: The date the post was published, as GMT.
+                  type:
+                  - string
+                  - 'null'
+                  format: date-time
+                slug:
+                  description: An alphanumeric identifier for the post unique to its type.
+                  type: string
+                status:
+                  description: A named status for the post.
+                  type: string
+                  enum:
+                  - publish
+                  - future
+                  - draft
+                  - pending
+                  - private
+                  - acf-disabled
+                  - congress
+                  - press
+                password:
+                  description: A password to protect access to the content and excerpt.
+                  type: string
+                parent:
+                  description: The ID for the parent of the post.
+                  type: integer
+                title:
+                  description: The title for the post.
+                  type: object
+                  properties:
+                    raw:
+                      description: Title for the post, as it exists in the database.
+                      type: string
+                    rendered:
+                      description: HTML title for the post, transformed for display.
+                      type: string
+                      readOnly: true
+                content:
+                  description: The content for the post.
+                  type: object
+                  properties:
+                    raw:
+                      description: Content for the post, as it exists in the database.
+                      type: string
+                    rendered:
+                      description: HTML content for the post, transformed for display.
+                      type: string
+                      readOnly: true
+                    block_version:
+                      description: Version of the content block format used by the post.
+                      type: integer
+                      readOnly: true
+                    protected:
+                      description: Whether the content is protected with a password.
+                      type: boolean
+                      readOnly: true
+                excerpt:
+                  description: The excerpt for the post.
+                  type: object
+                  properties:
+                    raw:
+                      description: Excerpt for the post, as it exists in the database.
+                      type: string
+                    rendered:
+                      description: HTML excerpt for the post, transformed for display.
+                      type: string
+                      readOnly: true
+                    protected:
+                      description: Whether the excerpt is protected with a password.
+                      type: boolean
+                      readOnly: true
+                template:
+                  description: The theme file to use to display the post.
+                  type: string
+                state_author_groups:
+                  description: The terms assigned to the post in the state_author_groups taxonomy.
+                  type: array
+                  items:
+                    type: integer
+                state_countries_and_areas:
+                  description: The terms assigned to the post in the state_countries_and_areas taxonomy.
+                  type: array
+                  items:
+                    type: integer
+                state_policy_issues:
+                  description: The terms assigned to the post in the state_policy_issues taxonomy.
+                  type: array
+                  items:
+                    type: integer
+                state_states:
+                  description: The terms assigned to the post in the state_states taxonomy.
+                  type: array
+                  items:
+                    type: integer
+                state_archive_tags:
+                  description: The terms assigned to the post in the state_archive_tags taxonomy.
+                  type: array
+                  items:
+                    type: integer
+                state_live_draft_tags:
+                  description: The terms assigned to the post in the state_live_draft_tags taxonomy.
+                  type: array
+                  items:
+                    type: integer
+                state_rss_feeds:
+                  description: The terms assigned to the post in the state_rss_feeds taxonomy.
+                  type: array
+                  items:
+                    type: integer
+                acf:
+                  description: ACF field data
+                  type: object
+      responses:
+        '200':
+          description: The updated item.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StateCountry'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteStateCountry
+      summary: Delete a state_country item
+      tags:
+      - state_country
+      description: Trash or permanently delete a state_country item. Requires an authenticated editorial account.
+      parameters:
+      - name: force
+        in: query
+        description: Whether to bypass Trash and force deletion.
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: The deleted item.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StateCountry'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Forbidden:
+      description: Authenticated but not permitted.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RestError'
+          example:
+            code: rest_cannot_create
+            message: Sorry, you are not allowed to create posts as this user.
+            data:
+              status: 403
+    BadRequest:
+      description: Invalid parameter.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RestError'
+          example:
+            code: rest_invalid_param
+            message: 'Invalid parameter(s): per_page'
+            data:
+              status: 400
+    NotFound:
+      description: No route or resource matched.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RestError'
+          example:
+            code: rest_post_invalid_id
+            message: Invalid post ID.
+            data:
+              status: 404
+    Unauthorized:
+      description: Authentication required.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RestError'
+          example:
+            code: rest_forbidden
+            message: Sorry, you are not allowed to do that.
+            data:
+              status: 401
+  schemas:
+    RestError:
+      type: object
+      description: WordPress REST API error envelope.
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code, e.g. rest_post_invalid_id.
+        message:
+          type: string
+          description: Human-readable error message.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              description: HTTP status code.
+      required:
+      - code
+      - message
+    StateCountry:
+      $schema: http://json-schema.org/draft-04/schema#
+      title: state_country
+      type: object
+      properties:
+        date:
+          description: The date the post was published, in the site's timezone.
+          type:
+          - string
+          - 'null'
+          format: date-time
+        date_gmt:
+          description: The date the post was published, as GMT.
+          type:
+          - string
+          - 'null'
+          format: date-time
+        guid:
+          description: The globally unique identifier for the post.
+          type: object
+          readOnly: true
+          properties:
+            raw:
+              description: GUID for the post, as it exists in the database.
+              type: string
+              readOnly: true
+            rendered:
+              description: GUID for the post, transformed for display.
+              type: string
+              readOnly: true
+        id:
+          description: Unique identifier for the post.
+          type: integer
+          readOnly: true
+        link:
+          description: URL to the post.
+          type: string
+          format: uri
+          readOnly: true
+        modified:
+          description: The date the post was last modified, in the site's timezone.
+          type: string
+          format: date-time
+          readOnly: true
+        modified_gmt:
+          description: The date the post was last modified, as GMT.
+          type: string
+          format: date-time
+          readOnly: true
+        slug:
+          description: An alphanumeric identifier for the post unique to its type.
+          type: string
+        status:
+          description: A named status for the post.
+          type: string
+          enum:
+          - publish
+          - future
+          - draft
+          - pending
+          - private
+          - acf-disabled
+          - congress
+          - press
+        type:
+          description: Type of post.
+          type: string
+          readOnly: true
+        password:
+          description: A password to protect access to the content and excerpt.
+          type: string
+        permalink_template:
+          description: Permalink template for the post.
+          type: string
+          readOnly: true
+        generated_slug:
+          description: Slug automatically generated from the post title.
+          type: string
+          readOnly: true
+        class_list:
+          description: An array of the class names for the post container element.
+          type: array
+          readOnly: true
+          items:
+            type: string
+        parent:
+          description: The ID for the parent of the post.
+          type: integer
+        title:
+          description: The title for the post.
+          type: object
+          properties:
+            raw:
+              description: Title for the post, as it exists in the database.
+              type: string
+            rendered:
+              description: HTML title for the post, transformed for display.
+              type: string
+              readOnly: true
+        content:
+          description: The content for the post.
+          type: object
+          properties:
+            raw:
+              description: Content for the post, as it exists in the database.
+              type: string
+            rendered:
+              description: HTML content for the post, transformed for display.
+              type: string
+              readOnly: true
+            block_version:
+              description: Version of the content block format used by the post.
+              type: integer
+              readOnly: true
+            protected:
+              description: Whether the content is protected with a password.
+              type: boolean
+              readOnly: true
+        excerpt:
+          description: The excerpt for the post.
+          type: object
+          properties:
+            raw:
+              description: Excerpt for the post, as it exists in the database.
+              type: string
+            rendered:
+              description: HTML excerpt for the post, transformed for display.
+              type: string
+              readOnly: true
+            protected:
+              description: Whether the excerpt is protected with a password.
+              type: boolean
+              readOnly: true
+        template:
+          description: The theme file to use to display the post.
+          type: string
+        state_author_groups:
+          description: The terms assigned to the post in the state_author_groups taxonomy.
+          type: array
+          items:
+            type: integer
+        state_countries_and_areas:
+          description: The terms assigned to the post in the state_countries_and_areas taxonomy.
+          type: array
+          items:
+            type: integer
+        state_policy_issues:
+          description: The terms assigned to the post in the state_policy_issues taxonomy.
+          type: array
+          items:
+            type: integer
+        state_states:
+          description: The terms assigned to the post in the state_states taxonomy.
+          type: array
+          items:
+            type: integer
+        state_archive_tags:
+          description: The terms assigned to the post in the state_archive_tags taxonomy.
+          type: array
+          items:
+            type: integer
+        state_live_draft_tags:
+          description: The terms assigned to the post in the state_live_draft_tags taxonomy.
+          type: array
+          items:
+            type: integer
+        state_rss_feeds:
+          description: The terms assigned to the post in the state_rss_feeds taxonomy.
+          type: array
+          items:
+            type: integer
+        acf:
+          description: Expose advanced custom fields.
+          type: object
+      links:
+      - rel: https://api.w.org/action-publish
+        title: The current user can publish this post.
+        href: https://www.state.gov/wp-json/wp/v2/state_country/{id}
+        targetSchema:
+          type: object
+          properties:
+            status:
+              type: string
+              enum:
+              - publish
+              - future
+      - rel: https://api.w.org/action-unfiltered-html
+        title: The current user can post unfiltered HTML markup and JavaScript.
+        href: https://www.state.gov/wp-json/wp/v2/state_country/{id}
+        targetSchema:
+          type: object
+          properties:
+            content:
+              raw:
+                type: string
+      - rel: https://api.w.org/action-assign-state_author_groups
+        title: The current user can assign terms in the state_author_groups taxonomy.
+        href: https://www.state.gov/wp-json/wp/v2/state_country/{id}
+        targetSchema:
+          type: object
+          properties:
+            state_author_groups:
+              type: array
+              items:
+                type: integer
+      - rel: https://api.w.org/action-create-state_author_groups
+        title: The current user can create terms in the state_author_groups taxonomy.
+        href: https://www.state.gov/wp-json/wp/v2/state_country/{id}
+        targetSchema:
+          type: object
+          properties:
+            state_author_groups:
+              type: array
+              items:
+                type: integer
+      - rel: https://api.w.org/action-assign-state_countries_and_areas
+        title: The current user can assign terms in the state_countries_and_areas taxonomy.
+        href: https://www.state.gov/wp-json/wp/v2/state_country/{id}
+        targetSchema:
+          type: object
+          properties:
+            state_countries_and_areas:
+              type: array
+              items:
+                type: integer
+      - rel: https://api.w.org/action-create-state_countries_and_areas
+        title: The current user can create terms in the state_countries_and_areas taxonomy.
+        href: https://www.state.gov/wp-json/wp/v2/state_country/{id}
+        targetSchema:
+          type: object
+          properties:
+            state_countries_and_areas:
+              type: array
+              items:
+                type: integer
+      - rel: https://api.w.org/action-assign-state_policy_issues
+        title: The current user can assign terms in the state_policy_issues taxonomy.
+        href: https://www.state.gov/wp-json/wp/v2/state_country/{id}
+        targetSchema:
+          type: object
+          properties:
+            state_policy_issues:
+              type: array
+              items:
+                type: integer
+      - rel: https://api.w.org/action-create-state_policy_issues
+        title: The current user can create terms in the state_policy_issues taxonomy.
+        href: https://www.state.gov/wp-json/wp/v2/state_country/{id}
+        targetSchema:
+          type: object
+          properties:
+            state_policy_issues:
+              type: array
+              items:
+                type: integer
+      - rel: https://api.w.org/action-assign-state_states
+        title: The current user can assign terms in the state_states taxonomy.
+        href: https://www.state.gov/wp-json/wp/v2/state_country/{id}
+        targetSchema:
+          type: object
+          properties:
+            state_states:
+              type: array
+              items:
+                type: integer
+      - rel: https://api.w.org/action-create-state_states
+        title: The current user can create terms in the state_states taxonomy.
+        href: https://www.state.gov/wp-json/wp/v2/state_country/{id}
+        targetSchema:
+          type: object
+          properties:
+            state_states:
+              type: array
+              items:
+                type: integer
+      - rel: https://api.w.org/action-assign-state_archive_tags
+        title: The current user can assign terms in the state_archive_tags taxonomy.
+        href: https://www.state.gov/wp-json/wp/v2/state_country/{id}
+        targetSchema:
+          type: object
+          properties:
+            state_archive_tags:
+              type: array
+              items:
+                type: integer
+      - rel: https://api.w.org/action-create-state_archive_tags
+        title: The current user can create terms in the state_archive_tags taxonomy.
+        href: https://www.state.gov/wp-json/wp/v2/state_country/{id}
+        targetSchema:
+          type: object
+          properties:
+            state_archive_tags:
+              type: array
+              items:
+                type: integer
+      - rel: https://api.w.org/action-assign-state_live_draft_tags
+        title: The current user can assign terms in the state_live_draft_tags taxonomy.
+        href: https://www.state.gov/wp-json/wp/v2/state_country/{id}
+        targetSchema:
+          type: object
+          properties:
+            state_live_draft_tags:
+              type: array
+              items:
+                type: integer
+      - rel: https://api.w.org/action-create-state_live_draft_tags
+        title: The current user can create terms in the state_live_draft_tags taxonomy.
+        href: https://www.state.gov/wp-json/wp/v2/state_country/{id}
+        targetSchema:
+          type: object
+          properties:
+            state_live_draft_tags:
+              type: array
+              items:
+                type: integer
+      - rel: https://api.w.org/action-assign-state_rss_feeds
+        title: The current user can assign terms in the state_rss_feeds taxonomy.
+        href: https://www.state.gov/wp-json/wp/v2/state_country/{id}
+        targetSchema:
+          type: object
+          properties:
+            state_rss_feeds:
+              type: array
+              items:
+                type: integer
+      - rel: https://api.w.org/action-create-state_rss_feeds
+        title: The current user can create terms in the state_rss_feeds taxonomy.
+        href: https://www.state.gov/wp-json/wp/v2/state_country/{id}
+        targetSchema:
+          type: object
+          properties:
+            state_rss_feeds:
+              type: array
+              items:
+                type: integer
+  securitySchemes:
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: WordPress Application Passwords. Advertised by the Department at https://www.state.gov/wp-json/ under authentication.application-passwords, authorization endpoint https://www.state.gov/wp-admin/authorize-application.php. Editorial use only — the public read surface requires no credentials.
+externalDocs:
+  description: WordPress REST API handbook — the upstream specification this surface implements
+  url: https://developer.wordpress.org/rest-api/
+x-generated-from: https://www.state.gov/wp-json/ route index + HTTP OPTIONS on each collection and item route (fetched 2026-09-07)
+x-apievangelist-method: derived
+x-method: derived
+x-source-url: https://www.state.gov/wp-json/
+x-provenance: Derived by the API Evangelist enrichment pipeline on 2026-09-07 from the Department of State's own live machine-readable discovery documents — the 473-route index at https://www.state.gov/wp-json/ and an HTTP OPTIONS response for each collection and item route, which returns the provider-authored JSON Schema and argument list. Every path, parameter, schema and error code below appears in one of those documents. The Department does not publish an OpenAPI description; verbatim copies of the source documents are in openapi/_original/. NOT harvested, NOT scaffolded — do not treat as a provider-published contract.

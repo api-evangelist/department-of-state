@@ -1,0 +1,418 @@
+openapi: 3.2.0
+info:
+  title: U.S.
+  version: wp/v2
+  summary: Public, unauthenticated read access to state.gov press releases, briefings, reports, biographies, bureaus, country pages and policy issues.
+  description: The Department of State publishes www.state.gov on WordPress and exposes the WordPress REST API at https://www.state.gov/wp-json.
+  contact:
+    name: U.S. Department of State
+    url: https://www.state.gov/
+  license:
+    name: U.S. Government Work (17 U.S.C. 105) — see the state.gov copyright notice
+    url: https://www.state.gov/copyright-information/
+servers:
+- url: https://www.state.gov/wp-json
+  description: Production state.gov WordPress REST API.
+security: []
+tags:
+- name: state_states
+  description: U.S. states taxonomy.
+paths:
+  /wp/v2/state_states:
+    get:
+      operationId: listStateStates
+      summary: List state_states
+      description: U.S. states taxonomy. Returns a JSON array; total counts are carried in the X-WP-Total and X-WP-TotalPages response headers.
+      tags:
+      - state_states
+      security: []
+      parameters:
+      - name: context
+        in: query
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      - name: page
+        in: query
+        description: Current page of the collection.
+        schema:
+          type: integer
+          default: 1
+          minimum: 1
+      - name: per_page
+        in: query
+        description: Maximum number of items to be returned in result set.
+        schema:
+          type: integer
+          default: 10
+          minimum: 1
+          maximum: 100
+      - name: search
+        in: query
+        description: Limit results to those matching a string.
+        schema:
+          type: string
+      - name: exclude
+        in: query
+        description: Ensure result set excludes specific IDs.
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: include
+        in: query
+        description: Limit result set to specific IDs.
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+      - name: order
+        in: query
+        description: Order sort attribute ascending or descending.
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: asc
+      - name: orderby
+        in: query
+        description: Sort collection by term attribute.
+        schema:
+          type: string
+          enum:
+          - id
+          - include
+          - name
+          - slug
+          - include_slugs
+          - term_group
+          - description
+          - count
+          default: name
+      - name: hide_empty
+        in: query
+        description: Whether to hide terms not assigned to any posts.
+        schema:
+          type: boolean
+          default: false
+      - name: parent
+        in: query
+        description: Limit result set to terms assigned to a specific parent.
+        schema:
+          type: integer
+      - name: post
+        in: query
+        description: Limit result set to terms assigned to a specific post.
+        schema:
+          type: integer
+          default: null
+      - name: slug
+        in: query
+        description: Limit result set to terms with one or more specific slugs.
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: A collection of state_states items.
+          headers:
+            X-WP-Total:
+              description: Total number of matching items.
+              schema:
+                type: integer
+            X-WP-TotalPages:
+              description: Total number of pages available.
+              schema:
+                type: integer
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StateStates'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: createStateStates
+      summary: Create a state_states item
+      description: Create a new state_states item. Requires an authenticated editorial account; anonymous callers receive 401.
+      tags:
+      - state_states
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  description: HTML description of the term.
+                  type: string
+                name:
+                  description: HTML title for the term.
+                  type: string
+                slug:
+                  description: An alphanumeric identifier for the term unique to its type.
+                  type: string
+                parent:
+                  description: The parent term ID.
+                  type: integer
+                meta:
+                  description: Meta fields.
+                  type: object
+                acf:
+                  description: ACF field data
+                  type: object
+              required:
+              - name
+      responses:
+        '201':
+          description: Created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StateStates'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /wp/v2/state_states/{id}:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      description: Unique identifier for the state_states item.
+      schema:
+        type: integer
+    get:
+      operationId: getStateStates
+      summary: Retrieve a state_states item
+      tags:
+      - state_states
+      security: []
+      description: Retrieve a single state_states item by numeric id.
+      parameters:
+      - name: context
+        in: query
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      responses:
+        '200':
+          description: The requested item.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StateStates'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    patch:
+      operationId: updateStateStates
+      summary: Update a state_states item
+      tags:
+      - state_states
+      description: Update an existing state_states item. Requires an authenticated editorial account. WordPress accepts POST, PUT or PATCH for this operation.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  description: HTML description of the term.
+                  type: string
+                name:
+                  description: HTML title for the term.
+                  type: string
+                slug:
+                  description: An alphanumeric identifier for the term unique to its type.
+                  type: string
+                parent:
+                  description: The parent term ID.
+                  type: integer
+                meta:
+                  description: Meta fields.
+                  type: object
+                acf:
+                  description: ACF field data
+                  type: object
+      responses:
+        '200':
+          description: The updated item.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StateStates'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteStateStates
+      summary: Delete a state_states item
+      tags:
+      - state_states
+      description: Trash or permanently delete a state_states item. Requires an authenticated editorial account.
+      parameters:
+      - name: force
+        in: query
+        description: Required to be true, as terms do not support trashing.
+        schema:
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: The deleted item.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StateStates'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Forbidden:
+      description: Authenticated but not permitted.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RestError'
+          example:
+            code: rest_cannot_create
+            message: Sorry, you are not allowed to create posts as this user.
+            data:
+              status: 403
+    BadRequest:
+      description: Invalid parameter.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RestError'
+          example:
+            code: rest_invalid_param
+            message: 'Invalid parameter(s): per_page'
+            data:
+              status: 400
+    NotFound:
+      description: No route or resource matched.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RestError'
+          example:
+            code: rest_post_invalid_id
+            message: Invalid post ID.
+            data:
+              status: 404
+    Unauthorized:
+      description: Authentication required.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RestError'
+          example:
+            code: rest_forbidden
+            message: Sorry, you are not allowed to do that.
+            data:
+              status: 401
+  schemas:
+    RestError:
+      type: object
+      description: WordPress REST API error envelope.
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code, e.g. rest_post_invalid_id.
+        message:
+          type: string
+          description: Human-readable error message.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              description: HTTP status code.
+      required:
+      - code
+      - message
+    StateStates:
+      $schema: http://json-schema.org/draft-04/schema#
+      title: state_states
+      type: object
+      properties:
+        id:
+          description: Unique identifier for the term.
+          type: integer
+          readOnly: true
+        count:
+          description: Number of published posts for the term.
+          type: integer
+          readOnly: true
+        description:
+          description: HTML description of the term.
+          type: string
+        link:
+          description: URL of the term.
+          type: string
+          format: uri
+          readOnly: true
+        name:
+          description: HTML title for the term.
+          type: string
+          required: true
+        slug:
+          description: An alphanumeric identifier for the term unique to its type.
+          type: string
+        taxonomy:
+          description: Type attribution for the term.
+          type: string
+          enum:
+          - state_states
+          readOnly: true
+        parent:
+          description: The parent term ID.
+          type: integer
+        meta:
+          description: Meta fields.
+          type: object
+        acf:
+          description: Expose advanced custom fields.
+          type: object
+  securitySchemes:
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: WordPress Application Passwords. Advertised by the Department at https://www.state.gov/wp-json/ under authentication.application-passwords, authorization endpoint https://www.state.gov/wp-admin/authorize-application.php. Editorial use only — the public read surface requires no credentials.
+externalDocs:
+  description: WordPress REST API handbook — the upstream specification this surface implements
+  url: https://developer.wordpress.org/rest-api/
+x-generated-from: https://www.state.gov/wp-json/ route index + HTTP OPTIONS on each collection and item route (fetched 2026-09-07)
+x-apievangelist-method: derived
+x-method: derived
+x-source-url: https://www.state.gov/wp-json/
+x-provenance: Derived by the API Evangelist enrichment pipeline on 2026-09-07 from the Department of State's own live machine-readable discovery documents — the 473-route index at https://www.state.gov/wp-json/ and an HTTP OPTIONS response for each collection and item route, which returns the provider-authored JSON Schema and argument list. Every path, parameter, schema and error code below appears in one of those documents. The Department does not publish an OpenAPI description; verbatim copies of the source documents are in openapi/_original/. NOT harvested, NOT scaffolded — do not treat as a provider-published contract.

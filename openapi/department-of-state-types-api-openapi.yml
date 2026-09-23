@@ -1,0 +1,208 @@
+openapi: 3.2.0
+info:
+  title: U.S. Department of State — state.gov Content Types API
+  version: wp/v2
+  summary: Public, unauthenticated read access to state.gov press releases, briefings, reports, biographies, bureaus, country pages and policy issues.
+  description: The Department of State publishes www.state.gov on WordPress and exposes the WordPress REST API at https://www.state.gov/wp-json.
+  contact:
+    name: U.S. Department of State
+    url: https://www.state.gov/
+  license:
+    name: U.S. Government Work (17 U.S.C. 105) — see the state.gov copyright notice
+    url: https://www.state.gov/copyright-information/
+servers:
+- url: https://www.state.gov/wp-json
+  description: Production state.gov WordPress REST API.
+security: []
+tags:
+- name: Types
+  description: Registered content types and their REST bases.
+paths:
+  /wp/v2/types:
+    get:
+      operationId: listType
+      summary: List types
+      description: Registered content types and their REST bases. Returns a JSON array; total counts are carried in the X-WP-Total and X-WP-TotalPages response headers.
+      tags:
+      - Types
+      security: []
+      parameters:
+      - name: context
+        in: query
+        description: Scope under which the request is made; determines fields present in response.
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+      responses:
+        '200':
+          description: A collection of types items.
+          headers:
+            X-WP-Total:
+              description: Total number of matching items.
+              schema:
+                type: integer
+            X-WP-TotalPages:
+              description: Total number of pages available.
+              schema:
+                type: integer
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Type'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    RestError:
+      type: object
+      description: WordPress REST API error envelope.
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code, e.g. rest_post_invalid_id.
+        message:
+          type: string
+          description: Human-readable error message.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              description: HTTP status code.
+      required:
+      - code
+      - message
+    Type:
+      $schema: http://json-schema.org/draft-04/schema#
+      title: type
+      type: object
+      properties:
+        capabilities:
+          description: All capabilities used by the post type.
+          type: object
+          readOnly: true
+        description:
+          description: A human-readable description of the post type.
+          type: string
+          readOnly: true
+        hierarchical:
+          description: Whether or not the post type should have children.
+          type: boolean
+          readOnly: true
+        viewable:
+          description: Whether or not the post type can be viewed.
+          type: boolean
+          readOnly: true
+        labels:
+          description: Human-readable labels for the post type for various contexts.
+          type: object
+          readOnly: true
+        name:
+          description: The title for the post type.
+          type: string
+          readOnly: true
+        slug:
+          description: An alphanumeric identifier for the post type.
+          type: string
+          readOnly: true
+        supports:
+          description: All features, supported by the post type.
+          type: object
+          readOnly: true
+        has_archive:
+          description: If the value is a string, the value will be used as the archive slug. If the value is false the post type has no archive.
+          type:
+          - string
+          - boolean
+          readOnly: true
+        taxonomies:
+          description: Taxonomies associated with post type.
+          type: array
+          items:
+            type: string
+          readOnly: true
+        rest_base:
+          description: REST base route for the post type.
+          type: string
+          readOnly: true
+        rest_namespace:
+          description: REST route's namespace for the post type.
+          type: string
+          readOnly: true
+        visibility:
+          description: The visibility settings for the post type.
+          type: object
+          readOnly: true
+          properties:
+            show_ui:
+              description: Whether to generate a default UI for managing this post type.
+              type: boolean
+            show_in_nav_menus:
+              description: Whether to make the post type available for selection in navigation menus.
+              type: boolean
+        icon:
+          description: The icon for the post type.
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        template:
+          type:
+          - array
+          description: The block template associated with the post type.
+          readOnly: true
+        template_lock:
+          type:
+          - string
+          - boolean
+          enum:
+          - all
+          - insert
+          - contentOnly
+          - false
+          description: The template_lock associated with the post type, or false if none.
+          readOnly: true
+  responses:
+    BadRequest:
+      description: Invalid parameter.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RestError'
+          example:
+            code: rest_invalid_param
+            message: 'Invalid parameter(s): per_page'
+            data:
+              status: 400
+    NotFound:
+      description: No route or resource matched.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RestError'
+          example:
+            code: rest_post_invalid_id
+            message: Invalid post ID.
+            data:
+              status: 404
+  securitySchemes:
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: WordPress Application Passwords. Advertised by the Department at https://www.state.gov/wp-json/ under authentication.application-passwords, authorization endpoint https://www.state.gov/wp-admin/authorize-application.php. Editorial use only — the public read surface requires no credentials.
+externalDocs:
+  description: WordPress REST API handbook — the upstream specification this surface implements
+  url: https://developer.wordpress.org/rest-api/
+x-generated-from: https://www.state.gov/wp-json/ route index + HTTP OPTIONS on each collection and item route (fetched 2026-09-07)
+x-apievangelist-method: derived
+x-method: derived
+x-source-url: https://www.state.gov/wp-json/
+x-provenance: Derived by the API Evangelist enrichment pipeline on 2026-09-07 from the Department of State's own live machine-readable discovery documents — the 473-route index at https://www.state.gov/wp-json/ and an HTTP OPTIONS response for each collection and item route, which returns the provider-authored JSON Schema and argument list. Every path, parameter, schema and error code below appears in one of those documents. The Department does not publish an OpenAPI description; verbatim copies of the source documents are in openapi/_original/. NOT harvested, NOT scaffolded — do not treat as a provider-published contract.
