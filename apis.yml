@@ -63,6 +63,8 @@ tags_raw:
 - Passports
 - Federal-Government
 common:
+- type: FinOps
+  url: finops/department-of-state-finops.yml
 - type: GitHubOrg
   url: https://github.com/USStateDept
 - type: Blog
