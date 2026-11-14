@@ -8,11 +8,20 @@ artifacts:
   authentication/department-of-state-authentication.yml:
     method: searched
     evidence: declared in the artifact
+  certification/observations-2026-11-11.jsonl:
+    method: unknown
+    evidence: no authorship recorded
+  certification/status.yml:
+    method: unknown
+    evidence: no authorship recorded
   conformance/department-of-state-conformance.yml:
     method: searched
     evidence: declared in the artifact
   conventions/department-of-state-conventions.yml:
     method: derived
+    evidence: declared in the artifact
+  data-license/department-of-state-data-license.yml:
+    method: harvested
     evidence: declared in the artifact
   data-model/department-of-state-data-model.yml:
     method: derived
@@ -30,6 +39,9 @@ artifacts:
     method: unknown
     evidence: no authorship recorded
   heartbeat/2026-11-06.yml:
+    method: unknown
+    evidence: no authorship recorded
+  heartbeat/2026-11-13.yml:
     method: unknown
     evidence: no authorship recorded
   json-ld/state-context.jsonld:
@@ -71,7 +83,7 @@ artifacts:
   kin/checks-2026-10-23T222754.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
-  kin/checks-2026-11-02T082323.yml:
+  kin/checks-2026-11-06T143934.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-23T000603.yml:
@@ -137,6 +149,9 @@ artifacts:
   kin/score-2026-11-02T082323.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-11-06T143934.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
   lifecycle/department-of-state-lifecycle.yml:
     method: searched
     evidence: declared in the artifact
@@ -170,11 +185,17 @@ artifacts:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
       to the provider's source is unverified
+  overlays/department-of-state-state-gov-content-certification-overlay.yaml:
+    method: derived
+    evidence: declared in the artifact
   packages/department-of-state-packages.yml:
     method: searched
     evidence: declared in the artifact
   plans/department-of-state-plans-pricing.yml:
     method: searched
+    evidence: declared in the artifact
+  privacy/department-of-state-privacy-policy.yml:
+    method: harvested
     evidence: declared in the artifact
   rate-limits/department-of-state-rate-limits.yml:
     method: searched
@@ -200,6 +221,9 @@ artifacts:
   skills/department-of-state-track-press-releases.md:
     method: unknown
     evidence: no authorship recorded
+  terms/department-of-state-terms-of-service.yml:
+    method: harvested
+    evidence: declared in the artifact
   vocabulary/state-vocabulary.yml:
     method: unknown
     evidence: no authorship recorded
